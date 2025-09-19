@@ -1,0 +1,21 @@
+{# Event card component. Expects a 'p' page variable with event extras. #}
+<article class="card">
+  <div class="meta">
+    <time datetime="{{ p.extra.date }}">{{ p.extra.date }}</time>
+    {% if p.extra.time %} — {{ p.extra.time }}{% endif %}
+  </div>
+  <h3><a href="{{ p.permalink | safe }}">{{ p.title }}</a></h3>
+  {% if p.extra.venue %}<div class="meta">{{ p.extra.venue }}{% if p.extra.city %}, {{ p.extra.city }}{% endif %}</div>{% endif %}
+  {% if p.extra.tags %}
+    <div class="meta">
+      {% for t in p.extra.tags %}<span class="badge">{{ t }}</span> {% endfor %}
+    </div>
+  {% endif %}
+  <p>{{ p.summary | default(value=p.description | default(value="")) | truncate(length=180) }}</p>
+  <p>
+    {% if p.extra.meetup_url %}<a class="btn btn-primary" href="{{ p.extra.meetup_url }}">RSVP on Meetup</a>{% endif %}
+    {% if p.extra.youtube_url %}<a class="btn" href="{{ p.extra.youtube_url }}">Video</a>{% endif %}
+    {% if p.extra.slides_url %}<a class="btn" href="{{ p.extra.slides_url }}">Slides</a>{% endif %}
+    {% if p.extra.ical_url %}<a class="btn" href="{{ p.extra.ical_url }}">iCal</a>{% endif %}
+  </p>
+</article>

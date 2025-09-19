@@ -1,0 +1,3 @@
+[workspace]
+members = ["tools/eventgen"]
+resolver = "2"

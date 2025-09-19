@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="hero">
+  <h1>Rust Munich</h1>
+  <p>We are the Munich Rustaceans — monthly meetups, talks, and hacking sessions.</p>
+</section>
+
+<section>
+  <h2>Upcoming</h2>
+  <div class="grid">
+    {% set upcoming = get_section(path="upcoming/_index.md") %}
+    {% for p in upcoming.pages | slice(start=0, end=6) %}
+      {% include "partials/event_card.html" %}
+    {% else %}
+      <p>No upcoming events right now. Join our <a href="{{ config.extra.meetup }}">Meetup</a> to get notified.</p>
+    {% endfor %}
+  </div>
+</section>
+
+<section>
+  <h2>Recent talks</h2>
+  <div class="grid">
+    {% set past = get_section(path="past/_index.md") %}
+    {% for p in past.pages | slice(start=0, end=3) %}
+      {% include "partials/event_card.html" %}
+    {% endfor %}
+  </div>
+</section>
+{% endblock content %}

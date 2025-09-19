@@ -1,0 +1,22 @@
+# Single source of truth for events. Generate content with tools/eventgen.
+# One file per event for easier PR reviews.
+id: "2025-10-15-rust-munich-1"
+title: "Rust Munich #1 — Intro & Lightning Talks"
+date: "2025-10-15"
+time: "19:00"
+venue: "Example HQ"
+address: "Example Str. 1"
+city: "Munich"
+tags: ["meetup", "lightning talks"]
+meetup_url: "https://www.meetup.com/de-DE/rust-munich/"
+slides_url: "https://github.com/rust-munich/slides"
+youtube_url: ""
+ical_url: ""
+speakers: ["Alice", "Bob"]
+language: "en"
+draft: false
+# Optional: coordinates for map embeds
+lat: null
+lon: null
+description: |
+  Welcome to our first meetup! Short talks and socializing.

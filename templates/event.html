@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block content %}
+<article class="prose">
+  <p class="meta">
+    <time datetime="{{ page.extra.date }}">{{ page.extra.date }}</time>{% if page.extra.time %} — {{ page.extra.time }}{% endif %}
+    {% if page.extra.venue %} • {{ page.extra.venue }}{% endif %}
+  </p>
+  <h1>{{ page.title }}</h1>
+
+  {% if page.extra.speakers %}
+  <p><strong>Speakers:</strong> {{ page.extra.speakers | join(sep=', ') }}</p>
+  {% endif %}
+
+  {% if page.extra.address %}
+  <p><strong>Address:</strong> {{ page.extra.address }}{% if page.extra.city %}, {{ page.extra.city }}{% endif %}</p>
+  {% endif %}
+
+  {{ page.content | safe }}
+
+  <p>
+    {% if page.extra.meetup_url %}<a class="btn btn-primary" href="{{ page.extra.meetup_url }}">RSVP on Meetup</a>{% endif %}
+    {% if page.extra.youtube_url %}<a class="btn" href="{{ page.extra.youtube_url }}">Video</a>{% endif %}
+    {% if page.extra.slides_url %}<a class="btn" href="{{ page.extra.slides_url }}">Slides</a>{% endif %}
+    {% if page.extra.ical_url %}<a class="btn" href="{{ page.extra.ical_url }}">iCal</a>{% endif %}
+  </p>
+
+  {% if page.extra.map_embed %}
+  <div style="margin-top:1rem">
+    {{ page.extra.map_embed | safe }}
+  </div>
+  {% endif %}
+</article>
+{% endblock content %}

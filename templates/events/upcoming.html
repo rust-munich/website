@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Upcoming events</h1>
+<div class="grid">
+  {% for p in section.pages %}
+    {% include "partials/event_card.html" %}
+  {% else %}
+    <p>No upcoming events scheduled.</p>
+  {% endfor %}
+</div>
+{% endblock content %}

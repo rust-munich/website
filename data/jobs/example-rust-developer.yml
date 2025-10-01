@@ -1,0 +1,30 @@
+# Job ad data structure - one file per job for easier PR reviews
+# Companies should open PRs to add their job listings
+id: "example-rust-developer"
+title: "Senior Rust Developer"
+company: "Example Tech GmbH"
+location: "Munich, Germany"
+type: "Full-time" # Full-time, Part-time, Contract, Internship
+remote: "Hybrid" # Remote, Hybrid, On-site
+experience: "Senior" # Junior, Mid-level, Senior, Lead
+posted_date: "2025-10-01"
+expires_date: "2030-12-01" # Optional expiry date
+salary_range: "€70,000 - €90,000" # Optional
+company_url: "https://example-tech.com"
+application_url: "https://example-tech.com/careers/rust-developer"
+logo_url: "http://127.0.0.1:1025/img/rust-munich-logo.svg" # Optional company logo
+tags: ["rust", "backend", "microservices", "kubernetes"]
+draft: false # Set to false when ready to publish
+description: |
+  Join our team building high-performance backend services in Rust.
+  You'll work on distributed systems, microservices architecture, and help scale our platform.
+requirements:
+  - "3+ years of Rust experience"
+  - "Experience with async programming"
+  - "Knowledge of distributed systems"
+  - "Fluent in English"
+benefits:
+  - "Competitive salary"
+  - "Flexible working hours"
+  - "Remote/hybrid options"
+  - "Conference budget"

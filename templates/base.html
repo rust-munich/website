@@ -61,18 +61,28 @@
             .content-area a {
                 color: #20201f;
                 font-weight: 500;
-                background: linear-gradient(transparent 65%, #ffc832 65%, #ffc832 80%, transparent 80%);
+                background: linear-gradient(
+                    transparent 65%,
+                    #ffc832 65%,
+                    #ffc832 80%,
+                    transparent 80%
+                );
                 text-decoration: none !important;
                 border-bottom: none !important;
             }
 
             .content-area a:hover {
-                background: linear-gradient(transparent 65%, #ffc832 65%, #ffc832 90%, transparent 90%);
+                background: linear-gradient(
+                    transparent 65%,
+                    #ffc832 65%,
+                    #ffc832 90%,
+                    transparent 90%
+                );
                 color: inherit;
             }
 
             .content-area h2 {
-                font-family: 'Fira Sans', ui-sans-serif, system-ui;
+                font-family: "Fira Sans", ui-sans-serif, system-ui;
                 font-size: 1.5rem;
                 font-weight: 700;
                 color: #20201f;
@@ -81,7 +91,7 @@
             }
 
             .content-area h3 {
-                font-family: 'Fira Sans', ui-sans-serif, system-ui;
+                font-family: "Fira Sans", ui-sans-serif, system-ui;
                 font-size: 1.25rem;
                 font-weight: 700;
                 color: #20201f;
@@ -119,26 +129,7 @@
                             >Rust Munich</a
                         >
                     </div>
-                    <nav
-                        class="flex flex-col md:flex-row gap-2 md:gap-4 font-sans"
-                        aria-label="Primary"
-                    >
-                        <a
-                            href="{{ get_url(path='/') }}"
-                            class="px-3 py-2 text-white hover:bg-gray-800 hover:text-rust-yellow rounded transition-colors"
-                            >Home</a
-                        >
-                        <a
-                            href="{{ get_url(path='/events/') }}"
-                            class="px-3 py-2 text-white hover:bg-gray-800 hover:text-rust-yellow rounded transition-colors"
-                            >Events</a
-                        >
-                        <a
-                            href="{{ get_url(path='/jobs/') }}"
-                            class="px-3 py-2 text-white hover:bg-gray-800 hover:text-rust-yellow rounded transition-colors"
-                            >Job ads</a
-                        >
-                    </nav>
+                    {% include "partials/menu.html" %}
                 </div>
             </div>
         </header>

@@ -29,10 +29,23 @@ muted_bg = "#f6f6f6"
 border_color = "#e6e6e6"
 twitter = "https://twitter.com/rustmunich"
 youtube = "https://www.youtube.com/@rustmunichmeetup4459/streams"
-discord = "https://discord.gg/your-discord-invite"
+discord = "https://discord.gg/SdB7yuEB"
 slides_github = "https://github.com/rust-munich/slides"
 website_github = "https://github.com/rust-munich/website"
 meetup = "https://www.meetup.com/de-DE/rust-munich/"
 logo_svg = "/img/rust-munich-logo.svg"
 # This boolean is used by templates to hide/show draft notices
 show_drafts = false
+
+# Menu configuration
+[[extra.menu]]
+title = "Home"
+path = "/"
+
+[[extra.menu]]
+title = "Events"
+path = "/past/"
+
+[[extra.menu]]
+title = "Job Opportunities"
+path = "/jobs/"

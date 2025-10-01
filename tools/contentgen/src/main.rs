@@ -9,13 +9,13 @@ use std::{
 
 #[derive(Debug, Parser)]
 #[command(
-    name = "eventgen",
+    name = "contentgen",
     version,
-    about = "Generate Zola event pages from YAML; optional Meetup publish"
+    about = "Generate Zola content pages from YAML data (events and jobs)"
 )]
 struct Cli {
     /// Path to the site root (where config.toml exists)
-    #[arg(short, long, default_value = ".")]
+    #[arg(short, long, default_value = "../..")]
     root: PathBuf,
 
     #[command(subcommand)]
@@ -24,11 +24,13 @@ struct Cli {
 
 #[derive(Debug, Subcommand)]
 enum Commands {
-    /// Generate Zola content from /data/events/*.yml
-    Generate,
+    /// Generate Zola event pages from /data/events/*.yml
+    Events,
+    /// Generate Zola job pages from /data/jobs/*.yml
+    Jobs,
     /// Publish a single event to Meetup using GraphQL.
     /// Requires MEETUP_ACCESS_TOKEN in env and groupId or groupUrlname.
-    Publish {
+    PublishEvent {
         /// Event YAML id (filename without extension) in data/events/
         id: String,
         /// Meetup group id (e.g. "12345678"). Optional if group_urlname is provided.
@@ -65,12 +67,36 @@ struct Event {
     description: Option<String>,
 }
 
+#[derive(Debug, Serialize, Deserialize)]
+struct Job {
+    id: String,
+    title: String,
+    company: String,
+    location: String,
+    #[serde(rename = "type")]
+    job_type: String,
+    remote: String,
+    experience: String,
+    posted_date: String,          // YYYY-MM-DD
+    expires_date: Option<String>, // YYYY-MM-DD
+    salary_range: Option<String>,
+    company_url: Option<String>,
+    application_url: String,
+    logo_url: Option<String>,
+    tags: Option<Vec<String>>,
+    draft: Option<bool>,
+    description: String,
+    requirements: Option<Vec<String>>,
+    benefits: Option<Vec<String>>,
+}
+
 #[tokio::main]
 async fn main() -> Result<()> {
     let cli = Cli::parse();
     match cli.cmd {
-        Commands::Generate => generate(&cli.root),
-        Commands::Publish {
+        Commands::Events => generate_events(&cli.root),
+        Commands::Jobs => generate_jobs(&cli.root),
+        Commands::PublishEvent {
             id,
             group_id,
             group_urlname,
@@ -79,7 +105,7 @@ async fn main() -> Result<()> {
     }
 }
 
-fn generate(root: &Path) -> Result<()> {
+fn generate_events(root: &Path) -> Result<()> {
     let data_dir = root.join("data").join("events");
     let upcoming_dir = root.join("content").join("upcoming");
     let past_dir = root.join("content").join("past");
@@ -109,7 +135,7 @@ fn generate(root: &Path) -> Result<()> {
             let is_past = date < today;
             let filename = format!("{}-{}.md", event.date, slugify(&event.title));
 
-            let extra = build_extra(&event, is_past);
+            let extra = build_event_extra(&event, is_past);
             let content = format!(
                 r#"+++
 title = "{title}"
@@ -133,10 +159,80 @@ template = "event.html"
             fs::write(target, content)?;
         }
     }
-    println!("Generated events.");
+    println!("Generated event pages.");
     Ok(())
 }
 
+fn generate_jobs(root: &Path) -> Result<()> {
+    let data_dir = root.join("data").join("jobs");
+    let jobs_dir = root.join("content").join("jobs");
+
+    // Ensure the jobs content directory exists
+    fs::create_dir_all(&jobs_dir)?;
+
+    let today = Local::now().date_naive();
+
+    for entry in
+        fs::read_dir(&data_dir).with_context(|| format!("reading {}", data_dir.display()))?
+    {
+        let entry = entry?;
+        if entry.file_type()?.is_file()
+            && entry
+                .path()
+                .extension()
+                .map(|e| e == "yml" || e == "yaml")
+                .unwrap_or(false)
+        {
+            let s = fs::read_to_string(entry.path())?;
+            let job: Job = serde_yaml::from_str(&s)
+                .with_context(|| format!("parsing {}", entry.path().display()))?;
+
+            // Skip draft jobs
+            if job.draft.unwrap_or(false) {
+                continue;
+            }
+
+            // Check if job is expired
+            if let Some(expires) = &job.expires_date {
+                let expires_date =
+                    NaiveDate::parse_from_str(expires, "%Y-%m-%d").with_context(|| {
+                        format!(
+                            "invalid expires_date {} in {}",
+                            expires,
+                            entry.path().display()
+                        )
+                    })?;
+                if expires_date < today {
+                    continue; // Skip expired jobs
+                }
+            }
+
+            let filename = format!("{}.md", job.id);
+            let extra = build_job_extra(&job);
+            let content = format!(
+                r#"+++
+title = "{title}"
+template = "job.html"
+[extra]
+{extra}
++++
+
+{body}
+"#,
+                title = escape_toml(&job.title),
+                extra = extra,
+                body = format_job_content(&job)
+            );
+
+            let target = jobs_dir.join(filename);
+            fs::write(target, content)?;
+        }
+    }
+    println!("Generated job pages.");
+    Ok(())
+}
+
+// Event helper functions
 fn slugify(s: &str) -> String {
     let mut slug = s.to_lowercase();
     slug = slug
@@ -153,11 +249,7 @@ fn slugify(s: &str) -> String {
         .join("-")
 }
 
-fn escape_toml(s: &str) -> String {
-    s.replace('"', "\\\"")
-}
-
-fn build_extra(e: &Event, is_past: bool) -> String {
+fn build_event_extra(e: &Event, is_past: bool) -> String {
     // Build TOML under [extra]
     let mut parts = vec![format!(r#"date = "{}""#, e.date)];
     if let Some(t) = &e.time {
@@ -211,6 +303,76 @@ fn build_extra(e: &Event, is_past: bool) -> String {
     parts.join("\n")
 }
 
+// Job helper functions
+fn build_job_extra(job: &Job) -> String {
+    let mut parts = vec![
+        format!(r#"company = "{}""#, escape_toml(&job.company)),
+        format!(r#"location = "{}""#, escape_toml(&job.location)),
+        format!(r#"job_type = "{}""#, escape_toml(&job.job_type)),
+        format!(r#"remote = "{}""#, escape_toml(&job.remote)),
+        format!(r#"experience = "{}""#, escape_toml(&job.experience)),
+        format!(r#"posted_date = "{}""#, job.posted_date),
+        format!(r#"application_url = "{}""#, job.application_url),
+    ];
+
+    if let Some(expires) = &job.expires_date {
+        parts.push(format!(r#"expires_date = "{}""#, expires));
+    }
+    if let Some(salary) = &job.salary_range {
+        parts.push(format!(r#"salary_range = "{}""#, escape_toml(salary)));
+    }
+    if let Some(url) = &job.company_url {
+        parts.push(format!(r#"company_url = "{}""#, url));
+    }
+    if let Some(logo) = &job.logo_url {
+        parts.push(format!(r#"logo_url = "{}""#, logo));
+    }
+    if let Some(tags) = &job.tags {
+        let tags_toml = tags
+            .iter()
+            .map(|t| format!(r#""{}""#, escape_toml(t)))
+            .collect::<Vec<_>>()
+            .join(", ");
+        parts.push(format!("tags = [{}]", tags_toml));
+    }
+
+    parts.join("\n")
+}
+
+fn format_job_content(job: &Job) -> String {
+    let mut content = String::new();
+
+    // Main description
+    content.push_str(&job.description);
+    content.push_str("\n\n");
+
+    // Requirements section
+    if let Some(requirements) = &job.requirements {
+        content.push_str("## Requirements\n\n");
+        for req in requirements {
+            content.push_str(&format!("- {}\n", req));
+        }
+        content.push_str("\n");
+    }
+
+    // Benefits section
+    if let Some(benefits) = &job.benefits {
+        content.push_str("## Benefits\n\n");
+        for benefit in benefits {
+            content.push_str(&format!("- {}\n", benefit));
+        }
+        content.push_str("\n");
+    }
+
+    content.trim_end().to_string()
+}
+
+// Shared helper functions
+fn escape_toml(s: &str) -> String {
+    s.replace('"', "\\\"")
+}
+
+// Meetup publishing functionality (from eventgen)
 #[derive(Serialize)]
 struct GraphQLRequest<'a> {
     query: &'a str,

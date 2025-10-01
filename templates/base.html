@@ -94,6 +94,8 @@
                                 href="{{ config.extra.meetup }}"
                                 title="Rust Munich on Meetup"
                                 aria-label="Rust Munich on Meetup"
+                                target="_blank"
+                                rel="noopener noreferrer"
                             >
                                 <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
                                     <path
@@ -106,6 +108,8 @@
                                 href="{{ config.extra.discord }}"
                                 title="Rust Munich on Discord"
                                 aria-label="Rust Munich on Discord"
+                                target="_blank"
+                                rel="noopener noreferrer"
                             >
                                 <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
                                     <path
@@ -118,6 +122,8 @@
                                 href="{{ config.extra.youtube }}"
                                 title="Rust Munich on YouTube"
                                 aria-label="Rust Munich on YouTube"
+                                target="_blank"
+                                rel="noopener noreferrer"
                             >
                                 <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
                                     <path
@@ -130,6 +136,8 @@
                                 href="{{ config.extra.twitter }}"
                                 title="Rust Munich on X (Twitter)"
                                 aria-label="Rust Munich on X (Twitter)"
+                                target="_blank"
+                                rel="noopener noreferrer"
                             >
                                 <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
                                     <path
@@ -142,6 +150,8 @@
                                 href="{{ config.extra.slides_github }}"
                                 title="Rust Munich on GitHub"
                                 aria-label="Rust Munich on GitHub"
+                                target="_blank"
+                                rel="noopener noreferrer"
                             >
                                 <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
                                     <path
@@ -156,7 +166,7 @@
                     <div>
                         <h3 class="font-sans font-bold text-rust-dark mb-4">Code of Conduct</h3>
                         <p class="text-sm leading-relaxed mb-3">
-                            Rust Munich uses the <a href="{{ get_url(path='/coc/') }}" class="text-rust-dark marker-underline font-medium">Berlin Code of Conduct</a>. Our primary goal is to be inclusive to the largest number of contributors, with the most varied and diverse backgrounds possible.
+                            Rust Munich uses the <a href="{% if lang == 'de' %}https://berlincodeofconduct.org/de{% else %}https://berlincodeofconduct.org{% endif %}" class="text-rust-dark marker-underline font-medium" target="_blank" rel="noopener noreferrer">Berlin Code of Conduct</a>. Our primary goal is to be inclusive to the largest number of contributors, with the most varied and diverse backgrounds possible.
                         </p>
                     </div>
 
@@ -169,7 +179,7 @@
                             {% if config.generate_feeds %}<div><a href="{{ get_url(path='atom.xml') }}" class="text-rust-dark marker-underline font-medium">RSS Feed</a></div>{% endif %}
                         </div>
                         <div class="text-xs mt-6 text-gray-500">
-                            Built with <a href="https://www.getzola.org" class="text-rust-dark marker-underline">Zola</a><br>
+                            Built with <a href="https://www.getzola.org" class="text-rust-dark marker-underline" target="_blank" rel="noopener noreferrer">Zola</a><br>
                             Content © {{ config.extra.org_name }}
                         </div>
                     </div>

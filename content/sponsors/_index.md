@@ -18,7 +18,7 @@ We are grateful to our sponsors who make Rust Munich possible. Their support hel
 
 ## Become a Sponsor
 
-Are you interested in supporting the Rust Munich community? We offer various sponsorship opportunities:
+Are you interested in supporting Rust Munich? We offer various sponsorship opportunities:
 
 - **Event Sponsorship**: Support individual meetups with refreshments and venue
 - **Community Sponsorship**: Ongoing support for our regular activities
@@ -36,6 +36,6 @@ Are you interested in supporting the Rust Munich community? We offer various spo
 Ready to sponsor? Reach out to us via:
 - [Meetup]({{ config.extra.meetup }})
 - [Discord]({{ config.extra.discord }})
-- [GitHub]({{ config.extra.slides_github }})
+- GitHub: {{ github_link() }}
 
 *Thank you for considering supporting Rust Munich!*

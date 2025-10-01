@@ -12,7 +12,7 @@ template = "page.html"
 Responsible for content according to § 55 Abs. 2 RStV:
 Rust Munich Community; Munich, Germany
 
-*This is a non-commercial, community-driven website for the Rust programming language meetup group in Munich. The website and its content are open source and operated purely for educational and community purposes.*
+*This is a non-commercial, community-driven website for Rust Munich. The website and its content are open source and operated purely for educational and community purposes.*
 
 **Contact:**
 Email: team@rust-munich.de

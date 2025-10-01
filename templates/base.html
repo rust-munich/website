@@ -57,13 +57,38 @@
                 color: inherit;
             }
 
-            /* Remove underlines only from text links, not buttons */
-            a:not([class*="inline-block"]):not([class*="btn"]):not([class*="social-icon"]) {
+            /* Content area styling */
+            .content-area a {
+                color: #20201f;
+                font-weight: 500;
+                background: linear-gradient(transparent 65%, #ffc832 65%, #ffc832 80%, transparent 80%);
                 text-decoration: none !important;
                 border-bottom: none !important;
             }
+
+            .content-area a:hover {
+                background: linear-gradient(transparent 65%, #ffc832 65%, #ffc832 90%, transparent 90%);
+                color: inherit;
+            }
+
+            .content-area h2 {
+                font-family: 'Fira Sans', ui-sans-serif, system-ui;
+                font-size: 1.5rem;
+                font-weight: 700;
+                color: #20201f;
+                margin-top: 2rem;
+                margin-bottom: 1rem;
+            }
+
+            .content-area h3 {
+                font-family: 'Fira Sans', ui-sans-serif, system-ui;
+                font-size: 1.25rem;
+                font-weight: 700;
+                color: #20201f;
+                margin-top: 1.5rem;
+                margin-bottom: 0.75rem;
+            }
         </style>
-        <link rel="stylesheet" href="{{ get_url(path='main.css') }}" />
         <link
             rel="alternate"
             type="application/atom+xml"
@@ -232,6 +257,13 @@
                                     href="{{ get_url(path='/sponsors/') }}"
                                     class="text-rust-dark marker-underline font-medium"
                                     >Sponsors</a
+                                >
+                            </div>
+                            <div>
+                                <a
+                                    href="{{ get_url(path='/privacy/') }}"
+                                    class="text-rust-dark marker-underline font-medium"
+                                    >Privacy Policy</a
                                 >
                             </div>
                             <div>

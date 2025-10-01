@@ -1,5 +1,6 @@
 +++
-title = "Sponsored job ads"
-# template = "page.html"
+title = "Job Opportunities"
+template = "jobs.html"
 +++
-We feature sponsored Rust job ads from companies that support Rust Munich. Inquiries welcome.
+
+We feature Rust job opportunities from companies that support our community. All job postings are submitted via GitHub Pull Request to ensure transparency and community involvement.

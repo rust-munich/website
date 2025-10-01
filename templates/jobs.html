@@ -1,0 +1,116 @@
+{% extends "base.html" %}
+{% block content %}
+<article class="max-w-none">
+    <h1 class="font-sans text-3xl md:text-4xl font-bold text-rust-dark mb-6">{{ section.title }}</h1>
+
+    <div class="text-gray-700 leading-relaxed space-y-4 mb-8">
+        {{ section.content | safe }}
+    </div>
+
+    <div class="mb-8 p-6 bg-yellow-50 border border-rust-yellow rounded-lg">
+        <h2 class="font-sans text-xl font-bold text-rust-dark mb-3 mt-0">📝 How to Post a Job</h2>
+        <p class="text-gray-700 mb-3">
+            Companies interested in posting Rust job opportunities can submit them via GitHub Pull Request.
+        </p>
+        <div class="space-y-2 text-sm text-gray-600">
+            <p><strong>Steps:</strong></p>
+            <ol class="list-decimal list-inside space-y-1 ml-4">
+                <li>Fork our <a href="{{ config.extra.website_github }}" class="text-rust-dark marker-underline font-medium" target="_blank" rel="noopener noreferrer">GitHub repository</a></li>
+                <li>Create a new YAML file in <code class="bg-gray-100 px-2 py-1 rounded">data/jobs/</code></li>
+                <li>Follow the format in the example file</li>
+                <li>Open a Pull Request with your job listing</li>
+                <li>We'll review and merge if it meets our guidelines</li>
+            </ol>
+        </div>
+    </div>
+
+    <h2 class="font-sans text-2xl font-bold text-rust-dark mb-6">Current Job Openings</h2>
+
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        {% for page in section.pages %}
+            <div class="bg-white border border-gray-200 rounded-lg p-6 hover:shadow-lg transition-shadow">
+                <div class="flex items-start justify-between mb-4">
+                    <div class="flex-1">
+                        <h3 class="font-sans text-xl font-bold text-rust-dark mb-1">
+                            <a href="{{ page.permalink | safe }}" class="text-rust-dark marker-underline">{{ page.title }}</a>
+                        </h3>
+                        <p class="text-lg text-gray-700 font-medium">{{ page.extra.company }}</p>
+                    </div>
+                    {% if page.extra.logo_url %}
+                    <img src="{{ page.extra.logo_url }}" alt="{{ page.extra.company }} logo" class="h-12 w-12 object-contain ml-4" loading="lazy">
+                    {% endif %}
+                </div>
+
+                <div class="space-y-2 mb-4 text-sm text-gray-600">
+                    <div class="flex flex-wrap gap-4">
+                        <span class="flex items-center">
+                            <svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"></path>
+                            </svg>
+                            {{ page.extra.location }}
+                        </span>
+                        <span class="flex items-center">
+                            <svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M6 6V5a3 3 0 013-3h2a3 3 0 013 3v1h2a2 2 0 012 2v3.57A22.952 22.952 0 0110 13a22.95 22.95 0 01-8-1.43V8a2 2 0 012-2h2zm2-1a1 1 0 011-1h2a1 1 0 011 1v1H8V5zm1 5a1 1 0 011-1h.01a1 1 0 110 2H10a1 1 0 01-1-1z" clip-rule="evenodd"></path>
+                            </svg>
+                            {{ page.extra.job_type }}
+                        </span>
+                        <span class="flex items-center">
+                            <svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4zM3 10a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H4a1 1 0 01-1-1v-6zM14 9a1 1 0 00-1 1v6a1 1 0 001 1h2a1 1 0 001-1v-6a1 1 0 00-1-1h-2z"></path>
+                            </svg>
+                            {{ page.extra.remote }}
+                        </span>
+                        <span class="flex items-center">
+                            <svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                            {{ page.extra.experience }}
+                        </span>
+                    </div>
+                    {% if page.extra.salary_range %}
+                    <div class="text-rust-dark font-medium">{{ page.extra.salary_range }}</div>
+                    {% endif %}
+                </div>
+
+                {% if page.extra.tags %}
+                <div class="mb-4">
+                    {% for tag in page.extra.tags %}
+                    <span class="inline-block px-2 py-1 text-xs bg-gray-100 text-gray-700 rounded-full mr-2 mb-1">{{ tag }}</span>
+                    {% endfor %}
+                </div>
+                {% endif %}
+
+                <p class="text-gray-700 text-sm mb-4 line-clamp-3">{{ page.summary | default(value=page.description | default(value="")) | truncate(length=150) }}</p>
+
+                <div class="flex flex-wrap gap-2">
+                    <a href="{{ page.permalink | safe }}"
+                       class="inline-block px-4 py-2 bg-rust-red text-white rounded font-sans text-sm hover:bg-rust-red/90 transition-colors">
+                        View Details
+                    </a>
+                    {% if page.extra.company_url %}
+                    <a href="{{ page.extra.company_url }}"
+                       class="inline-block px-4 py-2 border border-gray-300 text-rust-dark rounded font-sans text-sm hover:bg-yellow-50 hover:border-rust-yellow hover:text-rust-dark transition-colors"
+                       target="_blank"
+                       rel="noopener noreferrer">
+                        Company Info
+                    </a>
+                    {% endif %}
+                </div>
+
+                <div class="mt-4 pt-3 border-t border-gray-100 text-xs text-gray-500">
+                    Posted: {{ page.extra.posted_date | date(format="%B %d, %Y") }}
+                    {% if page.extra.expires_date %}
+                    • Deadline: {{ page.extra.expires_date | date(format="%B %d, %Y") }}
+                    {% endif %}
+                </div>
+            </div>
+        {% else %}
+            <div class="col-span-full text-center py-12">
+                <p class="text-gray-600 mb-4">No job openings available at the moment.</p>
+                <p class="text-sm text-gray-500">Companies interested in posting can follow the instructions above.</p>
+            </div>
+        {% endfor %}
+    </div>
+</article>
+{% endblock content %}

@@ -9,36 +9,49 @@
             name="description"
             content="{{ page.description | default(value=config.description) }}"
         />
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400;600;700;800&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&display=swap" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400;600;700;800&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&display=swap"
+            rel="stylesheet"
+        />
         <script src="https://cdn.tailwindcss.com"></script>
         <script>
             tailwind.config = {
                 theme: {
                     extend: {
                         colors: {
-                            'rust-orange': '#dea584',
-                            'rust-red': '#ce422b',
-                            'rust-yellow': '#ffc832',
-                            'rust-dark': '#20201f',
+                            "rust-orange": "#dea584",
+                            "rust-red": "#ce422b",
+                            "rust-yellow": "#ffc832",
+                            "rust-dark": "#20201f",
                         },
                         fontFamily: {
-                            'sans': ['Fira Sans', 'ui-sans-serif', 'system-ui'],
-                            'serif': ['Source Serif 4', 'ui-serif', 'Georgia', 'serif'],
-                        }
-                    }
-                }
-            }
+                            sans: ["Fira Sans", "ui-sans-serif", "system-ui"],
+                            serif: ["Source Serif 4", "ui-serif", "Georgia", "serif"],
+                        },
+                    },
+                },
+            };
         </script>
         <style>
             .marker-underline {
-                background: linear-gradient(transparent 65%, #ffc832 65%, #ffc832 80%, transparent 80%);
+                background: linear-gradient(
+                    transparent 65%,
+                    #ffc832 65%,
+                    #ffc832 80%,
+                    transparent 80%
+                );
                 text-decoration: none !important;
                 border-bottom: none !important;
             }
             .marker-underline:hover {
-                background: linear-gradient(transparent 65%, #ffc832 65%, #ffc832 90%, transparent 90%);
+                background: linear-gradient(
+                    transparent 65%,
+                    #ffc832 65%,
+                    #ffc832 90%,
+                    transparent 90%
+                );
                 text-decoration: none !important;
                 border-bottom: none !important;
                 color: inherit;
@@ -61,20 +74,45 @@
     <body class="font-serif text-rust-dark bg-white">
         <header class="sticky top-0 z-10 bg-gray-900 border-b border-gray-700">
             <div class="max-w-6xl mx-auto px-4">
-                <div class="flex flex-col md:flex-row md:items-center md:justify-between py-2 gap-4">
+                <div
+                    class="flex flex-col md:flex-row md:items-center md:justify-between py-2 gap-4"
+                >
                     <div class="flex items-center gap-4">
-                        <a class="flex items-center no-underline border-b-0 hover:border-b-0 focus:border-b-0" href="{{ config.base_url | default(value='/') }}">
-                            <img src="{{ config.extra.logo_svg }}" alt="Rust Munich logo" class="h-12 w-12 bg-white hover:bg-rust-yellow rounded-full p-1 transition-colors" />
+                        <a
+                            class="flex items-center no-underline border-b-0 hover:border-b-0 focus:border-b-0"
+                            href="{{ config.base_url | default(value='/') }}"
+                        >
+                            <img
+                                src="{{ config.extra.logo_svg }}"
+                                alt="Rust Munich logo"
+                                class="h-12 w-12 bg-white hover:bg-rust-yellow rounded-full p-1 transition-colors"
+                            />
                         </a>
-                        <a class="font-sans text-2xl md:text-4xl font-bold text-white hover:text-rust-yellow transition-colors" href="{{ config.base_url | default(value='/') }}"
+                        <a
+                            class="font-sans text-2xl md:text-4xl font-bold text-white hover:text-rust-yellow transition-colors"
+                            href="{{ config.base_url | default(value='/') }}"
                             >Rust Munich</a
                         >
                     </div>
-                    <nav class="flex flex-col md:flex-row gap-2 md:gap-4 font-sans" aria-label="Primary">
-                        <a href="{{ get_url(path='/') }}" class="px-3 py-2 text-white hover:bg-gray-800 hover:text-rust-yellow rounded transition-colors">Home</a>
-                        <a href="{{ get_url(path='/events/') }}" class="px-3 py-2 text-white hover:bg-gray-800 hover:text-rust-yellow rounded transition-colors">Events</a>
-                        <a href="{{ get_url(path='/about/') }}" class="px-3 py-2 text-white hover:bg-gray-800 hover:text-rust-yellow rounded transition-colors">About</a>
-                        <a href="{{ get_url(path='/jobs/') }}" class="px-3 py-2 text-white hover:bg-gray-800 hover:text-rust-yellow rounded transition-colors">Job ads</a>
+                    <nav
+                        class="flex flex-col md:flex-row gap-2 md:gap-4 font-sans"
+                        aria-label="Primary"
+                    >
+                        <a
+                            href="{{ get_url(path='/') }}"
+                            class="px-3 py-2 text-white hover:bg-gray-800 hover:text-rust-yellow rounded transition-colors"
+                            >Home</a
+                        >
+                        <a
+                            href="{{ get_url(path='/events/') }}"
+                            class="px-3 py-2 text-white hover:bg-gray-800 hover:text-rust-yellow rounded transition-colors"
+                            >Events</a
+                        >
+                        <a
+                            href="{{ get_url(path='/jobs/') }}"
+                            class="px-3 py-2 text-white hover:bg-gray-800 hover:text-rust-yellow rounded transition-colors"
+                            >Job ads</a
+                        >
                     </nav>
                 </div>
             </div>
@@ -166,7 +204,15 @@
                     <div>
                         <h3 class="font-sans font-bold text-rust-dark mb-4">Code of Conduct</h3>
                         <p class="text-sm leading-relaxed mb-3">
-                            Rust Munich uses the <a href="{% if lang == 'de' %}https://berlincodeofconduct.org/de{% else %}https://berlincodeofconduct.org{% endif %}" class="text-rust-dark marker-underline font-medium" target="_blank" rel="noopener noreferrer">Berlin Code of Conduct</a>. Our primary goal is to be inclusive to the largest number of contributors, with the most varied and diverse backgrounds possible.
+                            Rust Munich uses the
+                            <a
+                                href="{% if lang == 'de' %}https://berlincodeofconduct.org/de{% else %}https://berlincodeofconduct.org{% endif %}"
+                                class="text-rust-dark marker-underline font-medium"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                >Berlin Code of Conduct</a
+                            >. Our primary goal is to be inclusive to the largest number of
+                            contributors, with the most varied and diverse backgrounds possible.
                         </p>
                     </div>
 
@@ -174,12 +220,46 @@
                     <div>
                         <h3 class="font-sans font-bold text-rust-dark mb-4">Links</h3>
                         <div class="space-y-2 text-sm">
-                            <div><a href="{{ get_url(path='/about/') }}" class="text-rust-dark marker-underline font-medium">About</a></div>
-                            <div><a href="{{ get_url(path='/imprint/') }}" class="text-rust-dark marker-underline font-medium">Imprint</a></div>
-                            {% if config.generate_feeds %}<div><a href="{{ get_url(path='atom.xml') }}" class="text-rust-dark marker-underline font-medium">RSS Feed</a></div>{% endif %}
+                            <div>
+                                <a
+                                    href="{{ get_url(path='/about/') }}"
+                                    class="text-rust-dark marker-underline font-medium"
+                                    >About</a
+                                >
+                            </div>
+                            <div>
+                                <a
+                                    href="{{ get_url(path='/sponsors/') }}"
+                                    class="text-rust-dark marker-underline font-medium"
+                                    >Sponsors</a
+                                >
+                            </div>
+                            <div>
+                                <a
+                                    href="{{ get_url(path='/imprint/') }}"
+                                    class="text-rust-dark marker-underline font-medium"
+                                    >Imprint</a
+                                >
+                            </div>
+                            {% if config.generate_feeds %}
+                            <div>
+                                <a
+                                    href="{{ get_url(path='atom.xml') }}"
+                                    class="text-rust-dark marker-underline font-medium"
+                                    >RSS Feed</a
+                                >
+                            </div>
+                            {% endif %}
                         </div>
                         <div class="text-xs mt-6 text-gray-500">
-                            Built with <a href="https://www.getzola.org" class="text-rust-dark marker-underline" target="_blank" rel="noopener noreferrer">Zola</a><br>
+                            Built with
+                            <a
+                                href="https://www.getzola.org"
+                                class="text-rust-dark marker-underline"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                >Zola</a
+                            ><br />
                             Content © {{ config.extra.org_name }}
                         </div>
                     </div>

@@ -15,18 +15,17 @@ This repository contains the Zola static site for **rust-munich.de** and a small
 ├── config.toml             # Zola config (en default, de alternative)
 ├── content/                # Pages; events are generated into upcoming/ and past/
 ├── data/events/            # Single source of truth: one YAML per event
-├── sass/main.scss          # Styles inspired by the Rust blog
 ├── static/img/             # Logo placeholder (replace with icon repo asset)
-└── tools/eventgen/         # Rust CLI
+└── tools/contentgen/       # Rust CLI for events and jobs generation
 ```
 
 ## Local development
 
 ```bash
 # 1) Generate content from YAML
-cargo run -p eventgen -- --root . generate
-# or as cargo alias:
+#    NOTE: aliases defined in .cargo/config.toml
 cargo eventgen
+cargo jobgen
 
 # 2) Serve
 zola serve
@@ -59,10 +58,12 @@ description: |
 Then regenerate:
 
 ```bash
-cargo run -p eventgen -- --root . generate
+cargo eventgen
 ```
 
 ## Publishing to Meetup (optional)
+
+TODO: this section needs overhaul!! the cli arguments are not correct anymore
 
 The CLI can publish as a draft or publish immediately using Meetup's GraphQL API (OAuth2). You need an **access token** in `MEETUP_ACCESS_TOKEN` and either your group's **id** or **urlname**.
 

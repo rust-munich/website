@@ -64,7 +64,7 @@
                 <div class="flex flex-col md:flex-row md:items-center md:justify-between py-2 gap-4">
                     <div class="flex items-center gap-4">
                         <a class="flex items-center no-underline border-b-0 hover:border-b-0 focus:border-b-0" href="{{ config.base_url | default(value='/') }}">
-                            <img src="{{ config.extra.logo_svg }}" alt="Rust Munich logo" class="h-12 w-12 bg-white rounded-full p-1" />
+                            <img src="{{ config.extra.logo_svg }}" alt="Rust Munich logo" class="h-12 w-12 bg-white hover:bg-rust-yellow rounded-full p-1 transition-colors" />
                         </a>
                         <a class="font-sans text-2xl md:text-4xl font-bold text-white hover:text-rust-yellow transition-colors" href="{{ config.base_url | default(value='/') }}"
                             >Rust Munich</a
@@ -84,16 +84,16 @@
 
         <footer class="mt-12 py-8 border-t border-gray-200 text-gray-600">
             <div class="max-w-6xl mx-auto px-4">
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- Social Links Column -->
                     <div>
-                        <strong class="text-rust-dark">{{ config.title }}</strong><br />
-                        <small>{{ config.description }}</small>
-                        <div class="flex gap-3 mt-3 flex-wrap">
+                        <h3 class="font-sans font-bold text-rust-dark mb-4">Connect</h3>
+                        <div class="flex gap-3 flex-wrap">
                             <a
                                 class="inline-flex items-center justify-center w-10 h-10 border border-gray-300 rounded-full text-rust-dark hover:bg-gray-100 hover:border-rust-yellow hover:text-rust-yellow transition-all"
                                 href="{{ config.extra.meetup }}"
-                                title="Meetup"
-                                aria-label="Meetup"
+                                title="Rust Munich on Meetup"
+                                aria-label="Rust Munich on Meetup"
                             >
                                 <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
                                     <path
@@ -104,8 +104,8 @@
                             <a
                                 class="inline-flex items-center justify-center w-10 h-10 border border-gray-300 rounded-full text-rust-dark hover:bg-gray-100 hover:border-rust-yellow hover:text-rust-yellow transition-all"
                                 href="{{ config.extra.discord }}"
-                                title="Discord"
-                                aria-label="Discord"
+                                title="Rust Munich on Discord"
+                                aria-label="Rust Munich on Discord"
                             >
                                 <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
                                     <path
@@ -116,8 +116,8 @@
                             <a
                                 class="inline-flex items-center justify-center w-10 h-10 border border-gray-300 rounded-full text-rust-dark hover:bg-gray-100 hover:border-rust-yellow hover:text-rust-yellow transition-all"
                                 href="{{ config.extra.youtube }}"
-                                title="YouTube"
-                                aria-label="YouTube"
+                                title="Rust Munich on YouTube"
+                                aria-label="Rust Munich on YouTube"
                             >
                                 <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
                                     <path
@@ -128,8 +128,8 @@
                             <a
                                 class="inline-flex items-center justify-center w-10 h-10 border border-gray-300 rounded-full text-rust-dark hover:bg-gray-100 hover:border-rust-yellow hover:text-rust-yellow transition-all"
                                 href="{{ config.extra.twitter }}"
-                                title="Twitter"
-                                aria-label="Twitter"
+                                title="Rust Munich on X (Twitter)"
+                                aria-label="Rust Munich on X (Twitter)"
                             >
                                 <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
                                     <path
@@ -140,8 +140,8 @@
                             <a
                                 class="inline-flex items-center justify-center w-10 h-10 border border-gray-300 rounded-full text-rust-dark hover:bg-gray-100 hover:border-rust-yellow hover:text-rust-yellow transition-all"
                                 href="{{ config.extra.slides_github }}"
-                                title="GitHub"
-                                aria-label="GitHub"
+                                title="Rust Munich on GitHub"
+                                aria-label="Rust Munich on GitHub"
                             >
                                 <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
                                     <path
@@ -151,11 +151,26 @@
                             </a>
                         </div>
                     </div>
-                    <div class="flex flex-col justify-end">
-                        <div class="text-sm">
-                            Built with <a href="https://www.getzola.org" class="text-rust-dark marker-underline font-medium">Zola</a>. Content © {{
-                            config.extra.org_name }}. {% if config.generate_feeds %}
-                            <a href="{{ get_url(path='atom.xml') }}" class="text-rust-dark marker-underline font-medium">Feed</a>{% endif %}
+
+                    <!-- Code of Conduct Column -->
+                    <div>
+                        <h3 class="font-sans font-bold text-rust-dark mb-4">Code of Conduct</h3>
+                        <p class="text-sm leading-relaxed mb-3">
+                            Rust Munich uses the <a href="{{ get_url(path='/coc/') }}" class="text-rust-dark marker-underline font-medium">Berlin Code of Conduct</a>. Our primary goal is to be inclusive to the largest number of contributors, with the most varied and diverse backgrounds possible.
+                        </p>
+                    </div>
+
+                    <!-- Navigation Column -->
+                    <div>
+                        <h3 class="font-sans font-bold text-rust-dark mb-4">Links</h3>
+                        <div class="space-y-2 text-sm">
+                            <div><a href="{{ get_url(path='/about/') }}" class="text-rust-dark marker-underline font-medium">About</a></div>
+                            <div><a href="{{ get_url(path='/imprint/') }}" class="text-rust-dark marker-underline font-medium">Imprint</a></div>
+                            {% if config.generate_feeds %}<div><a href="{{ get_url(path='atom.xml') }}" class="text-rust-dark marker-underline font-medium">RSS Feed</a></div>{% endif %}
+                        </div>
+                        <div class="text-xs mt-6 text-gray-500">
+                            Built with <a href="https://www.getzola.org" class="text-rust-dark marker-underline">Zola</a><br>
+                            Content © {{ config.extra.org_name }}
                         </div>
                     </div>
                 </div>

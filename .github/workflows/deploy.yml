@@ -33,8 +33,8 @@ jobs:
 
       - name: Generate content
         run: |
-          ./target/release/contentgen events
-          ./target/release/contentgen jobs
+          ./target/release/contentgen --root . events
+          ./target/release/contentgen --root . jobs
 
       - name: Setup Zola
         uses: taiki-e/install-action@v2

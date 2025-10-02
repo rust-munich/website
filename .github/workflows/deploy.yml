@@ -46,6 +46,7 @@ jobs:
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
+        if: false # for now, the repo is not public, hence this fails
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3

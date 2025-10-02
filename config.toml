@@ -1,5 +1,5 @@
 # Zola configuration for rust-munich.de
-base_url = "https://rust-munich.de"
+base_url = "https://rust-munich.github.io/website/"
 title = "Rust Munich"
 description = "Rust Munich meetup group — events, community, and resources."
 default_language = "en"
@@ -33,19 +33,19 @@ discord = "https://discord.gg/SdB7yuEB"
 slides_github = "https://github.com/rust-munich/slides"
 website_github = "https://github.com/rust-munich/website"
 meetup = "https://www.meetup.com/de-DE/rust-munich/"
-logo_svg = "/website/img/rust-munich-logo.svg"
+logo_svg = "/img/rust-munich-logo.svg"
 # This boolean is used by templates to hide/show draft notices
 show_drafts = false
 
 # Menu configuration
 [[extra.menu]]
 title = "Home"
-path = "/website/"
+path = "/"
 
 [[extra.menu]]
 title = "Events"
-path = "/website/past/"
+path = "/past/"
 
 [[extra.menu]]
 title = "Job Opportunities"
-path = "/website/jobs/"
+path = "/jobs/"

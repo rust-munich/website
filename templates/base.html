@@ -118,7 +118,7 @@
                             href="{{ config.base_url | default(value='/') }}"
                         >
                             <img
-                                src="{{ config.extra.logo_svg }}"
+                                src="{{ config.base_url | default(value='/') }}{{ config.extra.logo_svg }}"
                                 alt="Rust Munich logo"
                                 class="h-12 w-12 bg-white hover:bg-rust-yellow rounded-full p-1 transition-colors"
                             />

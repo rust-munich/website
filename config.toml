@@ -33,19 +33,19 @@ discord = "https://discord.gg/SdB7yuEB"
 slides_github = "https://github.com/rust-munich/slides"
 website_github = "https://github.com/rust-munich/website"
 meetup = "https://www.meetup.com/de-DE/rust-munich/"
-logo_svg = "/img/rust-munich-logo.svg"
+logo_svg = "/website/img/rust-munich-logo.svg"
 # This boolean is used by templates to hide/show draft notices
 show_drafts = false
 
 # Menu configuration
 [[extra.menu]]
 title = "Home"
-path = "/"
+path = "/website/"
 
 [[extra.menu]]
 title = "Events"
-path = "/past/"
+path = "/website/past/"
 
 [[extra.menu]]
 title = "Job Opportunities"
-path = "/jobs/"
+path = "/website/jobs/"

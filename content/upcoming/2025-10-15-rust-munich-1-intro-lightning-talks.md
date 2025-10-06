@@ -18,3 +18,5 @@ is_upcoming = true
 +++
 
 Welcome to our first meetup! Short talks and socializing.
+
+[a link](https://google.com)

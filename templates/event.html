@@ -5,7 +5,7 @@
     <time datetime="{{ page.extra.date }}">{{ page.extra.date }}</time>{% if page.extra.time %} — {{ page.extra.time }}{% endif %}
     {% if page.extra.venue %} • {{ page.extra.venue }}{% endif %}
   </div>
-  <h1 class="font-sans text-3xl md:text-4xl font-bold text-rust-dark mb-6">{{ page.title }}</h1>
+  <h1 class="font-sans text-3xl md:text-4xl font-bold mb-6">{{ page.title }}</h1>
 
   {% if page.extra.speakers %}
   <div class="mb-4"><strong class="text-rust-dark">Speakers:</strong> <span class="text-gray-700">{{ page.extra.speakers | join(sep=', ') }}</span></div>
@@ -21,9 +21,9 @@
 
   <div class="flex flex-wrap gap-3 mb-8">
     {% if page.extra.meetup_url %}<a class="inline-block px-4 py-2 bg-rust-red text-white rounded font-sans text-sm hover:bg-rust-red/90 transition-colors" href="{{ page.extra.meetup_url }}">RSVP on Meetup</a>{% endif %}
-    {% if page.extra.youtube_url %}<a class="inline-block px-4 py-2 border border-gray-300 text-rust-dark rounded font-sans text-sm hover:bg-yellow-50 hover:border-rust-yellow hover:text-rust-dark transition-colors" href="{{ page.extra.youtube_url }}">Video</a>{% endif %}
-    {% if page.extra.slides_url %}<a class="inline-block px-4 py-2 border border-gray-300 text-rust-dark rounded font-sans text-sm hover:bg-yellow-50 hover:border-rust-yellow hover:text-rust-dark transition-colors" href="{{ page.extra.slides_url }}">Slides</a>{% endif %}
-    {% if page.extra.ical_url %}<a class="inline-block px-4 py-2 border border-gray-300 text-rust-dark rounded font-sans text-sm hover:bg-yellow-50 hover:border-rust-yellow hover:text-rust-dark transition-colors" href="{{ page.extra.ical_url }}">iCal</a>{% endif %}
+    {% if page.extra.youtube_url %}<a class="inline-block px-4 py-2 border border-gray-300 rounded font-sans text-sm hover:bg-yellow-50 hover:border-rust-yellow hover:transition-colors" href="{{ page.extra.youtube_url }}">Video</a>{% endif %}
+    {% if page.extra.slides_url %}<a class="inline-block px-4 py-2 border border-gray-300 rounded font-sans text-sm hover:bg-yellow-50 hover:border-rust-yellow hover:transition-colors" href="{{ page.extra.slides_url }}">Slides</a>{% endif %}
+    {% if page.extra.ical_url %}<a class="inline-block px-4 py-2 border border-gray-300 rounded font-sans text-sm hover:bg-yellow-50 hover:border-rust-yellow hover:transition-colors" href="{{ page.extra.ical_url }}">iCal</a>{% endif %}
   </div>
 
   {% if page.extra.map_embed %}

@@ -34,71 +34,8 @@
                 },
             };
         </script>
-        <style>
-            .marker-underline {
-                background: linear-gradient(
-                    transparent 65%,
-                    #ffc832 65%,
-                    #ffc832 80%,
-                    transparent 80%
-                );
-                text-decoration: none !important;
-                border-bottom: none !important;
-            }
-            .marker-underline:hover {
-                background: linear-gradient(
-                    transparent 65%,
-                    #ffc832 65%,
-                    #ffc832 90%,
-                    transparent 90%
-                );
-                text-decoration: none !important;
-                border-bottom: none !important;
-                color: inherit;
-            }
 
-            /* Content area styling */
-            .content-area a {
-                color: #20201f;
-                font-weight: 500;
-                background: linear-gradient(
-                    transparent 65%,
-                    #ffc832 65%,
-                    #ffc832 80%,
-                    transparent 80%
-                );
-                text-decoration: none !important;
-                border-bottom: none !important;
-            }
-
-            .content-area a:hover {
-                background: linear-gradient(
-                    transparent 65%,
-                    #ffc832 65%,
-                    #ffc832 90%,
-                    transparent 90%
-                );
-                color: inherit;
-            }
-
-            .content-area h2 {
-                font-family: "Fira Sans", ui-sans-serif, system-ui;
-                font-size: 1.5rem;
-                font-weight: 700;
-                color: #20201f;
-                margin-top: 2rem;
-                margin-bottom: 1rem;
-            }
-
-            .content-area h3 {
-                font-family: "Fira Sans", ui-sans-serif, system-ui;
-                font-size: 1.25rem;
-                font-weight: 700;
-                color: #20201f;
-                margin-top: 1.5rem;
-                margin-bottom: 0.75rem;
-            }
-        </style>
+        <link rel="stylesheet" href="{{ get_url(path='main.css') }}" />
         <link
             rel="alternate"
             type="application/atom+xml"
@@ -106,7 +43,7 @@
             href="{{ get_url(path='atom.xml') }}"
         />
     </head>
-    <body class="font-serif text-rust-dark bg-white">
+    <body class="font-serif bg-white">
         <header class="sticky top-0 z-10 bg-gray-900 border-b border-gray-700">
             <div class="max-w-6xl mx-auto px-4">
                 <div
@@ -134,17 +71,19 @@
             </div>
         </header>
 
-        <main class="max-w-6xl mx-auto px-4 py-8">{% block content %}{% endblock content %}</main>
+        <main class="max-w-6xl mx-auto px-4 py-8 page-content">
+            {% block content %}{% endblock content %}
+        </main>
 
         <footer class="mt-12 py-8 border-t border-gray-200 text-gray-600">
             <div class="max-w-6xl mx-auto px-4">
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                     <!-- Social Links Column -->
                     <div>
-                        <h3 class="font-sans font-bold text-rust-dark mb-4">Connect</h3>
+                        <h3 class="font-sans font-bold mb-4">Connect</h3>
                         <div class="flex gap-3 flex-wrap">
                             <a
-                                class="inline-flex items-center justify-center w-10 h-10 border border-gray-300 rounded-full text-rust-dark hover:bg-gray-100 hover:border-rust-yellow hover:text-rust-yellow transition-all"
+                                class="inline-flex items-center justify-center w-10 h-10 border border-gray-300 rounded-full hover:bg-gray-100 hover:border-rust-yellow hover:text-rust-yellow transition-all"
                                 href="{{ config.extra.meetup }}"
                                 title="Rust Munich on Meetup"
                                 aria-label="Rust Munich on Meetup"
@@ -158,7 +97,7 @@
                                 </svg>
                             </a>
                             <a
-                                class="inline-flex items-center justify-center w-10 h-10 border border-gray-300 rounded-full text-rust-dark hover:bg-gray-100 hover:border-rust-yellow hover:text-rust-yellow transition-all"
+                                class="inline-flex items-center justify-center w-10 h-10 border border-gray-300 rounded-full hover:bg-gray-100 hover:border-rust-yellow hover:text-rust-yellow transition-all"
                                 href="{{ config.extra.discord }}"
                                 title="Rust Munich on Discord"
                                 aria-label="Rust Munich on Discord"
@@ -172,7 +111,7 @@
                                 </svg>
                             </a>
                             <a
-                                class="inline-flex items-center justify-center w-10 h-10 border border-gray-300 rounded-full text-rust-dark hover:bg-gray-100 hover:border-rust-yellow hover:text-rust-yellow transition-all"
+                                class="inline-flex items-center justify-center w-10 h-10 border border-gray-300 rounded-full hover:bg-gray-100 hover:border-rust-yellow hover:text-rust-yellow transition-all"
                                 href="{{ config.extra.youtube }}"
                                 title="Rust Munich on YouTube"
                                 aria-label="Rust Munich on YouTube"
@@ -186,7 +125,7 @@
                                 </svg>
                             </a>
                             <a
-                                class="inline-flex items-center justify-center w-10 h-10 border border-gray-300 rounded-full text-rust-dark hover:bg-gray-100 hover:border-rust-yellow hover:text-rust-yellow transition-all"
+                                class="inline-flex items-center justify-center w-10 h-10 border border-gray-300 rounded-full hover:bg-gray-100 hover:border-rust-yellow hover:text-rust-yellow transition-all"
                                 href="{{ config.extra.twitter }}"
                                 title="Rust Munich on X (Twitter)"
                                 aria-label="Rust Munich on X (Twitter)"
@@ -200,7 +139,7 @@
                                 </svg>
                             </a>
                             <a
-                                class="inline-flex items-center justify-center w-10 h-10 border border-gray-300 rounded-full text-rust-dark hover:bg-gray-100 hover:border-rust-yellow hover:text-rust-yellow transition-all"
+                                class="inline-flex items-center justify-center w-10 h-10 border border-gray-300 rounded-full hover:bg-gray-100 hover:border-rust-yellow hover:text-rust-yellow transition-all"
                                 href="{{ config.extra.slides_github }}"
                                 title="Rust Munich on GitHub"
                                 aria-label="Rust Munich on GitHub"
@@ -218,12 +157,12 @@
 
                     <!-- Code of Conduct Column -->
                     <div>
-                        <h3 class="font-sans font-bold text-rust-dark mb-4">Code of Conduct</h3>
+                        <h3 class="font-sans font-bold mb-4">Code of Conduct</h3>
                         <p class="text-sm leading-relaxed mb-3">
                             Rust Munich uses the
                             <a
                                 href="{% if lang == 'de' %}https://berlincodeofconduct.org/de{% else %}https://berlincodeofconduct.org{% endif %}"
-                                class="text-rust-dark marker-underline font-medium"
+                                class="marker-underline font-medium"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 >Berlin Code of Conduct</a
@@ -234,33 +173,33 @@
 
                     <!-- Navigation Column -->
                     <div>
-                        <h3 class="font-sans font-bold text-rust-dark mb-4">Links</h3>
+                        <h3 class="font-sans font-bold mb-4">Links</h3>
                         <div class="space-y-2 text-sm">
                             <div>
                                 <a
                                     href="{{ get_url(path='/about/') }}"
-                                    class="text-rust-dark marker-underline font-medium"
+                                    class="marker-underline font-medium"
                                     >About</a
                                 >
                             </div>
                             <div>
                                 <a
                                     href="{{ get_url(path='/sponsors/') }}"
-                                    class="text-rust-dark marker-underline font-medium"
+                                    class="marker-underline font-medium"
                                     >Sponsors</a
                                 >
                             </div>
                             <div>
                                 <a
                                     href="{{ get_url(path='/privacy/') }}"
-                                    class="text-rust-dark marker-underline font-medium"
+                                    class="marker-underline font-medium"
                                     >Privacy Policy</a
                                 >
                             </div>
                             <div>
                                 <a
                                     href="{{ get_url(path='/imprint/') }}"
-                                    class="text-rust-dark marker-underline font-medium"
+                                    class="marker-underline font-medium"
                                     >Imprint</a
                                 >
                             </div>
@@ -268,7 +207,7 @@
                             <div>
                                 <a
                                     href="{{ get_url(path='atom.xml') }}"
-                                    class="text-rust-dark marker-underline font-medium"
+                                    class="marker-underline font-medium"
                                     >RSS Feed</a
                                 >
                             </div>
@@ -278,7 +217,7 @@
                             Built with
                             <a
                                 href="https://www.getzola.org"
-                                class="text-rust-dark marker-underline"
+                                class="marker-underline"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 >Zola</a

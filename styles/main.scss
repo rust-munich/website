@@ -1,6 +1,7 @@
 $rust-yellow: #ffc832;
 $rust-dark: #20201f;
 
+/* note: migrated to tailwind theme already */
 @mixin --marker-underline($transp) {
     background: linear-gradient(
         transparent 65%,
@@ -12,6 +13,7 @@ $rust-dark: #20201f;
     border-bottom: none !important;
 }
 
+/* note: migrated to tailwind theme already */
 .marker-underline {
     @include --marker-underline(80%);
 

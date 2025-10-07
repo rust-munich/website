@@ -1,0 +1,40 @@
+/* ../tailwindcss -i styles/tailwind.css -o public/main.t.css --watch */
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+@theme {
+    --color-yellow: #ffc832;
+    --color-rust-yellow: #ffc832;
+    --color-orange: #dea584;
+    --color-rust-orange: #dea584;
+    --color-red: #ce422b;
+    --color-rust-red: #ce422b;
+    --color-dark: #20201f;
+    --font-family: {
+        sans: [ "Fira Sans", "ui-sans-serif", "system-ui"],
+        serif: [ "Source Serif 4", "ui-serif", "Georgia", "serif"],
+    };
+}
+
+@layer components {
+    .marker-underline, .page-content a:not(.btn) {
+        background: linear-gradient(
+            transparent 65%,
+            var(--color-yellow) 65%,
+            var(--color-yellow) 80%,
+            transparent 80%
+        );
+        text-decoration: none !important;
+        border-bottom: none !important;
+
+        &:hover {
+            background: linear-gradient(
+                transparent 65%,
+                var(--color-yellow) 65%,
+                var(--color-yellow) 90%,
+                transparent 90%
+            );
+            color: inherit;
+        }
+    }
+}

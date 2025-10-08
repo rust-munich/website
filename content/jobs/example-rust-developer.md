@@ -12,7 +12,7 @@ application_url = "https://example-tech.com/careers/rust-developer"
 expires_date = "2030-12-01"
 salary_range = "€70,000 - €90,000"
 company_url = "https://example-tech.com"
-logo_url = "/website/img/rust-munich-logo.svg"
+logo_url = "/img/rust-munich-logo.svg"
 tags = ["rust", "backend", "microservices", "kubernetes"]
 +++
 

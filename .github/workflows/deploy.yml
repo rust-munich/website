@@ -46,7 +46,9 @@ jobs:
         run: zola build
 
       - name: Build with Tailwind
-        run: npx @tailwindcss/cli -m --optimize -i styles/tailwind.css -o public/main.t.css
+        run: |
+          npm install tailwindcss @tailwindcss/cli @tailwindcss/typography
+          npx @tailwindcss/cli -m --optimize -i styles/tailwind.css -o public/main.t.css
 
       - name: Setup Pages
         uses: actions/configure-pages@v4

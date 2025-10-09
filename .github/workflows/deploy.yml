@@ -40,10 +40,13 @@ jobs:
       - name: Setup Zola
         uses: taiki-e/install-action@v2
         with:
-          tool: zola@0.18.0
+          tool: zola@0.21.0
 
       - name: Build with Zola
         run: zola build
+
+      - name: Build with Tailwind
+        run: npx @tailwindcss/cli -m --optimize -i styles/tailwind.css -o public/main.t.css
 
       - name: Setup Pages
         uses: actions/configure-pages@v4

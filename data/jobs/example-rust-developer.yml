@@ -12,7 +12,7 @@ expires_date: "2030-12-01" # Optional expiry date
 salary_range: "€70,000 - €90,000" # Optional
 company_url: "https://example-tech.com"
 application_url: "https://example-tech.com/careers/rust-developer"
-logo_url: "/img/rust-munich-logo.svg" # Optional company logo
+logo_url: "https://rust-munich.github.io/website/img/rust-munich-logo.svg" # Optional company logo
 tags: ["rust", "backend", "microservices", "kubernetes"]
 draft: false # Set to false when ready to publish
 description: |

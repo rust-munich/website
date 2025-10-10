@@ -21,23 +21,24 @@ This repository contains the Zola static site for **rust-munich.de** and a small
 
 ## Local development
 
-```bash
-# 1) Generate content from YAML
-#    NOTE: aliases defined in .cargo/config.toml
-cargo eventgen
-cargo jobgen
+to keep things simple, there is a Makefile hiding the details..
 
-# 2) Serve
-zola serve
+```bash
+# one time action:
+make setup
+# use the content generators
+make build
+# watches for changes and serves locally
+make serve
 ```
 
 ## Adding an event
 
-Create a new file in `data/events/YYYY-MM-DD-slug.yml`:
+Create a new file in `data/events/rust-munich-YYYY-number.yml`:
 
 ```yaml
-id: "2025-11-12-rust-munich-2"
-title: "Rust Munich #2 — Ownership Deep Dive"
+id: "rust-munich-2025-2"
+title: "Rust Munich 2025/2"
 date: "2025-11-12"
 time: "19:00"
 venue: "YourVenue"

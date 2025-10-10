@@ -1,22 +1,44 @@
 # Single source of truth for events. Generate content with tools/eventgen.
 # One file per event for easier PR reviews.
-id: "2025-10-15-rust-munich-1"
-title: "Rust Munich #1 — Intro & Lightning Talks"
-date: "2025-10-15"
-time: "19:00"
-venue: "Example HQ"
-address: "Example Str. 1"
+id: "rust-munich-2025-3"
+title: "Rust Munich 2025/3"
+date: "2025-09-24"
+time: "18:30"
+venue: "Google Deutschland GmbH"
+address: "Erika-Mann-Straße 33"
 city: "Munich"
-tags: ["meetup", "lightning talks"]
-meetup_url: "https://www.meetup.com/de-DE/rust-munich/"
+tags: ["meetup", "embedded"]
+meetup_url: "https://www.meetup.com/rust-munich/events/307105978"
 slides_url: "https://github.com/rust-munich/slides"
 youtube_url: ""
-ical_url: ""
-speakers: ["Alice", "Bob"]
+ical_url: "https://www.meetup.com/rust-munich/events/307105978/ical/Rust+Munich+2025++3.ics"
+speakers: ["Tiago", "Julian", "Joel"]
 language: "en"
 draft: false
 # Optional: coordinates for map embeds
-lat: null
-lon: null
+lat: 48.14289
+lon: 11.540916
 description: |
-  Welcome to our first meetup! Short talks and socializing.
+  **Big thanks to our host: Google 👏👏👏**
+
+  **💻💻💻 The embedded part will have a hands-on section. Be sure to bring your laptop if you want to participate! 💻💻💻**
+
+  (If you missed to sign-up for the security badge or did get a last-minute spot from the waiting list - don't worry, we will get you a badge in the evening. Just make sure you arrive in time)
+
+  Another edition of the rust munich meetup!
+  The on-site event has limited capacity, this time without streaming and recording.
+
+  Agenda:
+
+    - 18:30 Hello: prep your beverage!
+    - 19:00~ish talk: "From Bare Metal Up: Leveling Up the Rust Embedded Ecosystem" by Tiago Manczak
+    - 19:50~ish: Food Break
+    - 20:15~ish talk: "Getting Started with Embedded Rust" by Julian Dickert and Joël Schulz-Andres
+    - 20:45~ish open space/discussion
+    - 21:30 THE END
+
+  Please do not come to the venue unless you have reserved a spot.
+
+  Discord for Q/A + Discussions: [Join the Rust Munich Discord](https://discord.gg/bM5RzVrF2z)
+
+  Thank you!

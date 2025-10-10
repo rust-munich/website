@@ -9,12 +9,12 @@
 
     {% if page.extra.speakers %}
     <div class="mb-4">
-        <strong class="text-rust-dark">Speakers:</strong>
+        <strong class="text-rust-dark">Speakers: </strong>
         <span class="text-gray-700">{{ page.extra.speakers | join(sep=', ') }}</span>
     </div>
     {% endif %} {% if page.extra.address %}
     <div class="mb-4">
-        <strong class="text-rust-dark">Address:</strong>
+        <strong class="text-rust-dark">Address: </strong>
         <span class="text-gray-700"
             >{{ page.extra.address }}{% if page.extra.city %}, {{ page.extra.city }}{% endif
             %}</span

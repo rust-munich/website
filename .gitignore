@@ -1,3 +1,5 @@
 target/
 .claude/
 public/
+content/past/*.md
+content/upcoming/*.md

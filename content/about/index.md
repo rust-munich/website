@@ -17,11 +17,11 @@ If you experience or witness a violation, contact the organizers in person at ev
 
 ### Current Organizers
 
-**Ludwig** is our networking guru — he knows every Rustacean by name before they even know they are a Rustacean. Following a wide range of topics and interests: from embedded over security to backend, Ludwig somehow manages to keep track of what everyone in the community is working on and loves connecting people with shared interests.
+**Ludwig** Rustacean since Rust 1.0 and experienced software engineer with a background in engineering physics and over two decades in software development across aerospace, automotive, and security domains.
 
-**Sven** is the kind of person who reads compiler error messages for fun and actually understands them. When he's not diving deep into the latest Rust RFC, he's probably explaining why that "simple" optimization you suggested isn't actually that simple (but in the nicest way possible).
+**Sven** is a passionate Rustacean and software engineer with a background in computer science and over two decades of experience in software development. He enjoys building open source tools and fostering community engagement.
 
-**Jonas** brings that perfect mix of pragmatism and curiosity that keeps our meetups grounded yet innovative. He has this uncanny ability to ask exactly the right question that makes everyone go "oh wait, what about...?" and suddenly the whole discussion gets ten times more interesting.
+**Jonas** is a software engineer with professional experience in C++ and Rust. He has a passion for system-level software, including embedded devices, databases and distributed systems.
 
 ### Alumni
 

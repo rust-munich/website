@@ -1,0 +1,24 @@
+{% set class = class | default(value="") %}
+{% set variant = variant | default(value="primary") %}
+{% set size = size | default(value="md") %}
+
+{% if variant == "primary" %}
+  {% set btn_classes = "bg-rust-red text-white hover:bg-rust-red/90" %}
+{% elif variant == "secondary" %}
+  {% set btn_classes = "border border-gray-300 hover:bg-yellow-50 hover:border-rust-yellow" %}
+{% else %}
+  {% set btn_classes = variant %}
+{% endif %}
+
+{% if size == "sm" %}
+  {% set size_classes = "px-4 py-2 text-sm" %}
+{% elif size == "lg" %}
+  {% set size_classes = "px-6 py-3" %}
+{% else %}
+  {% set size_classes = "px-4 py-2" %}
+{% endif %}
+
+<a href="{{ url }}"
+   class="btn inline-block {{ size_classes }} {{ btn_classes }} rounded font-sans font-medium transition-colors {{ class }}"
+   {% if target %}target="{{ target }}"{% endif %}
+   {% if rel %}rel="{{ rel }}"{% endif %}>{{ text }}</a>

@@ -13,6 +13,15 @@ Rust Munich uses the [Berlin Code of Conduct](https://berlincodeofconduct.org). 
 Our primary goal is to be inclusive to the largest number of contributors, with the most varied and diverse backgrounds possible.
 If you experience or witness a violation, contact the organizers in person at events or by email.
 
+## Link tree
+
+- {{ meetup_link(text="Meetup.com group") }}
+- {{ discord_link(text="Discord server") }}
+- {{ github_link(text="GitHub organization") }}
+- {{ twitter_link(text="Twitter") }}
+- {{ youtube_link(text="YouTube") }}
+- {{ linkedin_link(text="LinkedIn group") }}
+
 ## The Team
 
 ### Current Organizers

@@ -32,8 +32,10 @@ twitter = "https://twitter.com/rustmunich"
 youtube = "https://www.youtube.com/@rustmunichmeetup4459/streams"
 discord = "https://discord.gg/SdB7yuEB"
 slides_github = "https://github.com/rust-munich/slides"
+github_org = "https://github.com/rust-munich/"
 website_github = "https://github.com/rust-munich/website"
 meetup = "https://www.meetup.com/de-DE/rust-munich/"
+linkedin = "https://www.linkedin.com/groups/9802799/"
 logo_svg = "img/rust-munich-logo.svg"
 # This boolean is used by templates to hide/show draft notices
 show_drafts = false

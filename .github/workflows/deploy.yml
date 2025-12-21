@@ -51,10 +51,12 @@ jobs:
           npx @tailwindcss/cli -m --optimize -i styles/tailwind.css -o public/main.t.css
 
       - name: Setup Pages
+        if: github.ref == 'refs/heads/main'
         uses: actions/configure-pages@v4
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
+        if: github.ref == 'refs/heads/main'
         with:
           path: "./public"
 

@@ -1,59 +1,142 @@
-$rust-yellow: #ffc832;
-$rust-dark: #20201f;
+// Rust Munich Styles
+// Modular SCSS with dark/light theme support
 
-/* note: migrated to tailwind theme already */
-@mixin --marker-underline($transp) {
-    background: linear-gradient(
-        transparent 65%,
-        $rust-yellow 65%,
-        $rust-yellow $transp,
-        transparent $transp
-    );
-    text-decoration: none !important;
-    border-bottom: none !important;
+// Theme system
+@use "theme/variables";
+@use "theme/light";
+@use "theme/dark";
+
+// Components
+@use "components/marker-underline";
+
+// Base styles using theme variables
+body {
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-size: 1.125rem; // 18px base
+  line-height: 1.7;
 }
 
-/* note: migrated to tailwind theme already */
-.marker-underline {
-    @include --marker-underline(80%);
-
-    &:hover {
-        @include --marker-underline(90%);
-        color: inherit;
-    }
+// Typography - larger, more impactful
+h1 {
+  font-size: 3rem;
+  line-height: 1.2;
+  @media (min-width: 768px) {
+    font-size: 4rem;
+  }
 }
 
-/* Content area styling */
-.page-content a:not(.inline-block) {
-    @include --marker-underline(80%);
-
-    color: $rust-dark;
-    font-weight: 500;
-
-    &:hover {
-        @include --marker-underline(90%);
-        color: inherit;
-    }
+h2 {
+  font-size: 2rem;
+  line-height: 1.3;
+  @media (min-width: 768px) {
+    font-size: 2.5rem;
+  }
 }
 
+h3 {
+  font-size: 1.5rem;
+  line-height: 1.4;
+  @media (min-width: 768px) {
+    font-size: 1.75rem;
+  }
+}
+
+// Content area styling
 .page-content h2 {
-    font-family: "Fira Sans", ui-sans-serif, system-ui;
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: $rust-dark;
-    margin-top: 2rem;
-    margin-bottom: 1rem;
+  font-family: "Fira Sans", ui-sans-serif, system-ui;
+  font-weight: 700;
+  color: var(--color-text);
+  margin-top: 1.5rem;
+  margin-bottom: 1rem;
 }
 
 .page-content h3 {
-    font-family: "Fira Sans", ui-sans-serif, system-ui;
-    font-size: 1.25rem;
-    font-weight: 700;
-    color: $rust-dark;
-    margin-top: 1.5rem;
-    margin-bottom: 0.75rem;
+  font-family: "Fira Sans", ui-sans-serif, system-ui;
+  font-weight: 700;
+  color: var(--color-text);
+  margin-top: 2rem;
+  margin-bottom: 1rem;
 }
 
-.page-content ul {
-    /* list-disc */
+.page-content p {
+  font-size: 1.125rem;
+  margin-bottom: 1.25rem;
+}
+
+// Code blocks
+code {
+  background-color: var(--color-code-bg);
+}
+
+// ============================================
+// Full-bleed section system
+// ============================================
+
+.section {
+  padding: 3rem 1rem;
+
+  @media (min-width: 768px) {
+    padding: 4rem 2rem;
+  }
+}
+
+.section-inner {
+  max-width: 72rem;
+  margin: 0 auto;
+}
+
+// Section color variants
+.section-default {
+  background-color: var(--color-bg);
+}
+
+.section-warm {
+  background-color: var(--section-warm);
+}
+
+.section-cool {
+  background-color: var(--section-cool);
+}
+
+.section-dark {
+  background-color: var(--section-dark);
+  color: var(--section-dark-text);
+
+  & h1, & h2, & h3, & h4, & p, & span, & div {
+    color: var(--section-dark-text);
+  }
+}
+
+// Social icons in footer
+.social-icon {
+  border: 1px solid var(--color-border);
+  color: var(--color-text-muted);
+
+  &:hover {
+    background-color: var(--color-card-hover);
+    border-color: var(--rust-yellow);
+    color: var(--rust-yellow);
+  }
+}
+
+
+// Card backgrounds
+.card-bg {
+  background-color: var(--color-card-bg);
+}
+
+// Stats section large numbers
+.stat-number {
+  font-size: 3rem;
+  font-weight: 800;
+
+  @media (min-width: 768px) {
+    font-size: 4rem;
+  }
+}
+
+.stat-label {
+  font-size: 1.125rem;
+  color: var(--color-text-muted);
 }

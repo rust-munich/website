@@ -1,0 +1,42 @@
+// Dark Theme
+// Soft dark inspired by GitHub dark mode
+
+// Manual toggle: add data-theme="dark" to <html>
+[data-theme="dark"] {
+  --theme-bg: #0d1117;
+  --theme-bg-alt: #161b22;
+  --theme-text: #e6edf3;
+  --theme-text-muted: #8b949e;
+  --theme-border: #30363d;
+  --theme-card-bg: #161b22;
+  --theme-card-hover: #21262d;
+  --theme-link: #e6edf3;
+  --theme-code-bg: #30363d;
+
+  // Section backgrounds - higher contrast
+  --theme-section-warm: #261a14;    // Noticeable rust-brown
+  --theme-section-cool: #0f1926;    // Noticeable blue
+  --theme-section-dark: #010409;    // Near black
+  --theme-section-dark-text: #e6edf3;
+}
+
+// Auto-detect system preference
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --theme-bg: #0d1117;
+    --theme-bg-alt: #161b22;
+    --theme-text: #e6edf3;
+    --theme-text-muted: #8b949e;
+    --theme-border: #30363d;
+    --theme-card-bg: #161b22;
+    --theme-card-hover: #21262d;
+    --theme-link: #e6edf3;
+    --theme-code-bg: #30363d;
+
+    // Section backgrounds - higher contrast
+    --theme-section-warm: #261a14;
+    --theme-section-cool: #0f1926;
+    --theme-section-dark: #010409;
+    --theme-section-dark-text: #e6edf3;
+  }
+}

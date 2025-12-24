@@ -1,27 +1,31 @@
 {% extends "base.html" %}
 {% block content %}
-<h1 class="font-sans text-3xl md:text-4xl font-bold mb-8">Past events</h1>
-<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-  {% if paginator %}
-    {% for p in paginator.pages %}
-      {% include "partials/event_card.html" %}
-    {% endfor %}
-  {% else %}
-    {% for p in section.pages %}
-      {% include "partials/event_card.html" %}
-    {% endfor %}
-  {% endif %}
-</div>
+<section class="section section-default">
+  <div class="section-inner">
+    <h1 class="font-sans font-bold mb-10">Past Events</h1>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+      {% if paginator %}
+        {% for p in paginator.pages %}
+          {% include "partials/event_card.html" %}
+        {% endfor %}
+      {% else %}
+        {% for p in section.pages %}
+          {% include "partials/event_card.html" %}
+        {% endfor %}
+      {% endif %}
+    </div>
 
-{% if paginator and paginator.number_pagers > 1 %}
-<nav class="flex justify-center gap-2 mt-8">
-  {% if paginator.previous %}
-    <a href="{{ paginator.previous }}" class="px-4 py-2 border border-gray-300 rounded hover:bg-gray-50">&larr; Newer</a>
-  {% endif %}
-  <span class="px-4 py-2 text-gray-600">Page {{ paginator.current_index }} of {{ paginator.number_pagers }}</span>
-  {% if paginator.next %}
-    <a href="{{ paginator.next }}" class="px-4 py-2 border border-gray-300 rounded hover:bg-gray-50">Older &rarr;</a>
-  {% endif %}
-</nav>
-{% endif %}
+    {% if paginator and paginator.number_pagers > 1 %}
+    <nav class="flex justify-center gap-3 mt-12">
+      {% if paginator.previous %}
+        <a href="{{ paginator.previous }}" class="btn px-5 py-3 border rounded font-medium hover:bg-gray-50 transition-colors" style="border-color: var(--color-border);">&larr; Newer</a>
+      {% endif %}
+      <span class="px-5 py-3" style="color: var(--color-text-muted);">Page {{ paginator.current_index }} of {{ paginator.number_pagers }}</span>
+      {% if paginator.next %}
+        <a href="{{ paginator.next }}" class="btn px-5 py-3 border rounded font-medium hover:bg-gray-50 transition-colors" style="border-color: var(--color-border);">Older &rarr;</a>
+      {% endif %}
+    </nav>
+    {% endif %}
+  </div>
+</section>
 {% endblock content %}

@@ -15,26 +15,7 @@
             href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400;600;700;800&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&display=swap"
             rel="stylesheet"
         />
-        <!--<script src="https://cdn.tailwindcss.com"></script>-->
         <link rel="stylesheet" href="{{ get_url(path='main.t.css') }}" />
-        <script>
-            tailwind.config = {
-                theme: {
-                    extend: {
-                        colors: {
-                            "rust-orange": "#dea584",
-                            "rust-red": "#ce422b",
-                            "rust-yellow": "#ffc832",
-                            "rust-dark": "#20201f",
-                        },
-                        fontFamily: {
-                            sans: ["Fira Sans", "ui-sans-serif", "system-ui"],
-                            serif: ["Source Serif 4", "ui-serif", "Georgia", "serif"],
-                        },
-                    },
-                },
-            };
-        </script>
 
         <link
             rel="alternate"
@@ -52,17 +33,17 @@
                     <div class="flex items-center gap-4">
                         <a
                             class="flex items-center no-underline border-b-0 hover:border-b-0 focus:border-b-0"
-                            href="{{ config.base_url | default(value='/') }}"
+                            href="{{ get_url(path='/') }}"
                         >
                             <img
-                                src="{{ config.base_url | default(value='/') }}{{ config.extra.logo_svg }}"
+                                src="{{ get_url(path=config.extra.logo_svg) }}"
                                 alt="Rust Munich logo"
                                 class="h-12 w-12 bg-white hover:bg-rust-yellow rounded-full p-1 transition-colors"
                             />
                         </a>
                         <a
                             class="font-sans text-2xl md:text-4xl font-bold text-white hover:text-rust-yellow transition-colors"
-                            href="{{ config.base_url | default(value='/') }}"
+                            href="{{ get_url(path='/') }}"
                             >Rust Munich</a
                         >
                     </div>
@@ -198,9 +179,16 @@
                             </div>
                             <div>
                                 <a
-                                    href="{{ get_url(path='/sponsors/') }}"
+                                    href="{{ get_url(path='/contribute/') }}"
                                     class="marker-underline font-medium"
-                                    >Sponsors</a
+                                    >Contribute</a
+                                >
+                            </div>
+                            <div>
+                                <a
+                                    href="{{ get_url(path='/past-hosts/') }}"
+                                    class="marker-underline font-medium"
+                                    >Our Hosts</a
                                 >
                             </div>
                             <div>

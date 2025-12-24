@@ -13,7 +13,7 @@ This repository contains the Zola static site for **rust-munich.de** and a small
 .
 ├── Cargo.toml              # workspace (CLI)
 ├── config.toml             # Zola config (en default, de alternative)
-├── content/                # Pages; events are generated into upcoming/ and past/
+├── content/                # Pages; events are generated into events/upcoming/ and events/past/
 ├── data/events/            # Single source of truth: one YAML per event
 ├── static/img/             # Logo placeholder (replace with icon repo asset)
 └── tools/contentgen/       # Rust CLI for events and jobs generation

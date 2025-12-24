@@ -1,16 +1,99 @@
 {% extends "base.html" %} {% block content %}
-<section class="bg-white py-10 mb-8">
-    <h1 class="font-sans text-4xl md:text-6xl font-bold mb-4 leading-tight">Rust Munich</h1>
-    <p class="text-lg md:text-xl text-gray-600 leading-relaxed">
-        We are the Munich Rustaceans — quarterly meetups, talks, and hacking sessions.
+<section class="py-10 mb-12">
+    <h1 class="font-sans text-4xl md:text-6xl font-bold mb-6 leading-tight">Rust Munich</h1>
+    <p class="text-xl md:text-2xl text-gray-700 leading-relaxed mb-6">
+        Munich's Rust community since 2015. We meet quarterly to learn, share, and hack together.
     </p>
+    <div class="flex flex-wrap gap-4">
+        <a
+            href="{{ config.extra.meetup }}"
+            class="btn inline-block px-6 py-3 bg-rust-red text-white rounded font-sans font-medium hover:bg-rust-red/90 transition-colors"
+            target="_blank"
+            rel="noopener noreferrer"
+            >Join on Meetup</a
+        >
+        <a
+            href="{{ config.extra.discord }}"
+            class="btn inline-block px-6 py-3 border border-gray-300 rounded font-sans font-medium hover:bg-gray-50 transition-colors"
+            target="_blank"
+            rel="noopener noreferrer"
+            >Discord</a
+        >
+    </div>
+</section>
+
+<section class="mb-12 py-8 border-t border-b border-gray-200">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+        <div>
+            <div class="text-4xl font-bold text-rust-red mb-2">2015</div>
+            <div class="text-gray-600">Founded</div>
+        </div>
+        <div>
+            <div class="text-4xl font-bold text-rust-red mb-2">1,600+</div>
+            <div class="text-gray-600">Members</div>
+        </div>
+        <div>
+            <div class="text-4xl font-bold text-rust-red mb-2">45+</div>
+            <div class="text-gray-600">Events</div>
+        </div>
+    </div>
+</section>
+
+<section class="mb-12">
+    <h2 class="font-sans text-2xl md:text-3xl font-bold mb-6">How We Meet</h2>
+    <p class="text-gray-700 mb-6 leading-relaxed">
+        We host one event per quarter — alternating between talks and hands-on hacking evenings.
+    </p>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="border border-gray-200 rounded-lg p-6">
+            <h3 class="font-sans text-xl font-bold mb-3">Talks</h3>
+            <p class="text-sm text-gray-500 mb-3">Q1 & Q3 (odd quarters)</p>
+            <p class="text-gray-700">
+                Community members and guests share what they've built, learned, or discovered.
+                Typically 2-3 talks per evening, followed by discussion and networking.
+            </p>
+        </div>
+        <div class="border border-gray-200 rounded-lg p-6">
+            <h3 class="font-sans text-xl font-bold mb-3">Hacking Evenings</h3>
+            <p class="text-sm text-gray-500 mb-3">Q2 & Q4 (even quarters)</p>
+            <p class="text-gray-700 mb-3">
+                Small groups (&lt;25 people) working together on a shared challenge. We pick a
+                project, hack on it, and learn from each other.
+            </p>
+            <p class="text-sm text-gray-500">
+                Past projects:
+                <a
+                    href="https://github.com/rust-munich/hack-evening-2024-4"
+                    class="marker-underline"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >2024/4</a
+                >,
+                <a
+                    href="https://github.com/rust-munich/hack-evening-2025-2"
+                    class="marker-underline"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >2025/2</a
+                >
+                <a
+                    href="https://github.com/rust-munich/hack-evening-2025-12"
+                    class="marker-underline"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >2025/4</a
+                >
+            </p>
+        </div>
+    </div>
 </section>
 
 <section class="mb-12">
     <h2 class="font-sans text-2xl md:text-3xl font-bold mb-6">Upcoming</h2>
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {% set upcoming = get_section(path="upcoming/_index.md") %} {% for p in upcoming.pages |
-        slice(start=0, end=6) %} {% include "partials/event_card.html" %} {% else %}
+        {% set upcoming = get_section(path="events/upcoming/_index.md") %} {% for p in
+        upcoming.pages | slice(start=0, end=6) %} {% include "partials/event_card.html" %} {% else
+        %}
         <p class="text-gray-600 col-span-full">
             No upcoming events right now. Join our
             <a href="{{ config.extra.meetup }}" class="marker-underline font-medium">Meetup</a>
@@ -21,10 +104,25 @@
 </section>
 
 <section class="mb-12">
-    <h2 class="font-sans text-2xl md:text-3xl font-bold mb-6">Recent talks</h2>
+    <h2 class="font-sans text-2xl md:text-3xl font-bold mb-6">Recent Events</h2>
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {% set past = get_section(path="past/_index.md") %} {% for p in past.pages | slice(start=0,
-        end=3) %} {% include "partials/event_card.html" %} {% endfor %}
+        {% set past = get_section(path="events/past/_index.md") %} {% for p in past.pages |
+        slice(start=0, end=3) %} {% include "partials/event_card.html" %} {% endfor %}
     </div>
+    <div class="mt-6">
+        <a href="{{ get_url(path='/events/past/') }}" class="marker-underline font-medium"
+            >View all events →</a
+        >
+    </div>
+</section>
+
+<section class="mb-12 bg-gray-50 rounded-lg p-8">
+    <h2 class="font-sans text-2xl md:text-3xl font-bold mb-4">Our Culture</h2>
+    <p class="text-gray-700 leading-relaxed">
+        We're a learning-first community. Whether you're writing your first
+        <code class="text-sm bg-gray-200 px-1 rounded">fn main()</code> or maintaining production
+        Rust systems, you belong here. We value sharing knowledge, asking questions, and helping
+        each other grow.
+    </p>
 </section>
 {% endblock content %}

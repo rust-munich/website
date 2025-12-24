@@ -1,0 +1,39 @@
+id: "rust-munich-2025-4"
+title: "Rust Munich 2025/4 - Hacking Evening"
+date: "2025-12-10"
+time: "18:30"
+venue: "SAP Labs Munich"
+address: "Friedrich-Ludwig-Bauer-Straße 5"
+city: "Garching bei München"
+tags: ["meetup", "hacking-evening"]
+meetup_url: "https://www.meetup.com/rust-munich/events/307105932"
+slides_url: ""
+youtube_url: ""
+ical_url: ""
+speakers: []
+language: "en"
+draft: false
+description: |
+  Hands-on mini-hackathon where up to 24 participants work together on an Advent of Code challenge.
+
+  Similar to university times when you had to solve small problems in the computer lab within an hour - but with Rust programming applied to workplace-relevant skills.
+
+  Participants receive an initial presentation outlining the project and required dependencies, then have approximately 2 hours to complete the task individually or in small groups.
+
+  **What to bring:**
+  - Laptop with display
+  - Rust compiler (stable) or Docker with rustup
+  - Your favorite IDE/editor
+  - GitHub account
+  - Discord account (optional)
+
+  Drinks and snacks provided!
+
+  Challenge repo: https://github.com/rust-munich/hack-evening-2025-12
+
+  **How to get there:**
+  - U6 to Garching-Forschungszentrum (~10 min walk)
+  - Exit A9 at "Garching Nord", follow signs to "Forschungszentrum"
+  - Free parking available on-site
+
+  Discord: https://discord.gg/XG4nbEu9

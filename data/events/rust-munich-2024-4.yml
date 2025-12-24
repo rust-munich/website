@@ -1,0 +1,33 @@
+id: "rust-munich-2024-4"
+title: "Rust Munich 2024/4 - Hacking Evening"
+date: "2024-12-12"
+time: "19:00"
+venue: "SAP Labs Munich"
+address: "Friedrich-Ludwig-Bauer-Straße 5"
+city: "Garching bei München"
+tags: ["meetup", "hacking-evening"]
+meetup_url: "https://www.meetup.com/rust-munich/events/304827279"
+slides_url: ""
+youtube_url: ""
+ical_url: ""
+speakers: []
+language: "en"
+draft: false
+description: |
+  Mini-hackathon bringing together up to 24 Rust developers for a hands-on coding session.
+
+  We'll work on the "1 Billion Row Challenge" - focusing on Clap, argument parsing, error handling, and logging.
+
+  Participants work individually or in small groups to complete a project within two hours, with support via a dedicated Discord channel.
+
+  **What to bring:**
+  - Laptop with display
+  - Rust compiler (stable) or Docker with rustup
+  - Your favorite IDE/editor
+  - GitHub account
+
+  Drinks and snacks provided!
+
+  Challenge repo: https://github.com/rust-munich/hack-evening-2024-4
+
+  Discord for Q/A + Discussions: https://discord.gg/bM5RzVrF2z

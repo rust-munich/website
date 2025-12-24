@@ -1,0 +1,37 @@
+id: "rust-munich-2025-2"
+title: "Rust Munich 2025/2 - Hacking Evening"
+date: "2025-06-05"
+time: "18:30"
+venue: "SAP Labs Munich"
+address: "Friedrich-Ludwig-Bauer-Straße 5"
+city: "Garching bei München"
+tags: ["meetup", "hacking-evening"]
+meetup_url: "https://www.meetup.com/rust-munich/events/307105443"
+slides_url: ""
+youtube_url: ""
+ical_url: ""
+speakers: []
+language: "en"
+draft: false
+description: |
+  We are excited to continue the new format of hacking one evening all together that we started in December 2024.
+
+  This time we'll explore solutions from the previous "1 billion row challenge" - what worked and what didn't.
+
+  Participants work individually or in small groups for approximately 2 hours, with initial instructional slides and a dedicated Discord channel for code sharing and assistance.
+
+  **What to bring:**
+  - Laptop with display
+  - Rust compiler (stable) or Docker with rustup
+  - Your favorite IDE/editor (zed.dev, VSCode, or RustRover)
+  - GitHub and Discord accounts
+
+  Drinks and snacks provided!
+
+  Challenge repo: https://github.com/rust-munich/hack-evening-2025-2
+
+  **How to get there:**
+  - U6 to Garching-Forschungszentrum (~10 min walk)
+  - Free parking available on-site
+
+  Discord: https://discord.gg/SdB7yuEB

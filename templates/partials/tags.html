@@ -1,0 +1,7 @@
+{% if page.extra.tags %}
+<div class="mb-4">
+    {% for tag in page.extra.tags %}
+    <span class="btn inline-block px-2 py-1 text-xs bg-gray-100 text-gray-700 rounded-full mr-2 mb-1">{{ tag }}</span>
+    {% endfor %}
+</div>
+{% endif %}

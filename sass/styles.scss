@@ -1,0 +1,59 @@
+$rust-yellow: #ffc832;
+$rust-dark: #20201f;
+
+/* note: migrated to tailwind theme already */
+@mixin --marker-underline($transp) {
+    background: linear-gradient(
+        transparent 65%,
+        $rust-yellow 65%,
+        $rust-yellow $transp,
+        transparent $transp
+    );
+    text-decoration: none !important;
+    border-bottom: none !important;
+}
+
+/* note: migrated to tailwind theme already */
+.marker-underline {
+    @include --marker-underline(80%);
+
+    &:hover {
+        @include --marker-underline(90%);
+        color: inherit;
+    }
+}
+
+/* Content area styling */
+.page-content a:not(.inline-block) {
+    @include --marker-underline(80%);
+
+    color: $rust-dark;
+    font-weight: 500;
+
+    &:hover {
+        @include --marker-underline(90%);
+        color: inherit;
+    }
+}
+
+.page-content h2 {
+    font-family: "Fira Sans", ui-sans-serif, system-ui;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: $rust-dark;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+}
+
+.page-content h3 {
+    font-family: "Fira Sans", ui-sans-serif, system-ui;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: $rust-dark;
+    margin-top: 1.5rem;
+    margin-bottom: 0.75rem;
+}
+
+.page-content ul {
+    /* list-disc */
+}

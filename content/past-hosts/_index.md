@@ -7,42 +7,52 @@ Rust Munich wouldn't happen without companies opening their doors to us. A heart
 
 ## Thank You
 
-<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 my-8">
-  <div class="border border-gray-200 rounded-lg p-6 text-center">
-    <a href="https://www.sap.com" class="hover:text-[#dea584]" target="_blank" rel="noopener noreferrer">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 my-8">
+  <div class="card-bg border rounded-xl p-6 text-center" style="border-color: var(--color-border);">
+    <a href="https://www.sap.com" class="marker-underline" target="_blank" rel="noopener noreferrer">
       <h3 class="font-sans font-bold text-lg">SAP</h3>
     </a>
-    <p class="text-sm text-gray-600 mt-2">Garching bei München</p>
+    <p class="text-sm mt-2" style="color: var(--color-text-muted);">Garching bei München</p>
   </div>
-  <div class="border border-gray-200 rounded-lg p-6 text-center">
-    <a href="https://about.google" class="hover:text-[#dea584]" target="_blank" rel="noopener noreferrer">
+  <div class="card-bg border rounded-xl p-6 text-center" style="border-color: var(--color-border);">
+    <a href="https://about.google" class="marker-underline" target="_blank" rel="noopener noreferrer">
       <h3 class="font-sans font-bold text-lg">Google</h3>
     </a>
-    <p class="text-sm text-gray-600 mt-2">München</p>
+    <p class="text-sm mt-2" style="color: var(--color-text-muted);">München</p>
   </div>
-  <div class="border border-gray-200 rounded-lg p-6 text-center">
-    <a href="https://mainmatter.com" class="hover:text-[#dea584]" target="_blank" rel="noopener noreferrer">
+  <div class="card-bg border rounded-xl p-6 text-center" style="border-color: var(--color-border);">
+    <a href="https://mainmatter.com" class="marker-underline" target="_blank" rel="noopener noreferrer">
       <h3 class="font-sans font-bold text-lg">Mainmatter</h3>
     </a>
-    <p class="text-sm text-gray-600 mt-2">München</p>
+    <p class="text-sm mt-2" style="color: var(--color-text-muted);">München</p>
   </div>
-  <div class="border border-gray-200 rounded-lg p-6 text-center">
-    <a href="https://www.jetbrains.com" class="hover:text-[#dea584]" target="_blank" rel="noopener noreferrer">
+  <div class="card-bg border rounded-xl p-6 text-center" style="border-color: var(--color-border);">
+    <a href="https://www.jetbrains.com" class="marker-underline" target="_blank" rel="noopener noreferrer">
       <h3 class="font-sans font-bold text-lg">JetBrains</h3>
     </a>
-    <p class="text-sm text-gray-600 mt-2">München</p>
+    <p class="text-sm mt-2" style="color: var(--color-text-muted);">München</p>
   </div>
-  <div class="border border-gray-200 rounded-lg p-6 text-center">
-    <a href="https://www.mgm-sp.com" class="hover:text-[#dea584]" target="_blank" rel="noopener noreferrer">
+  <div class="card-bg border rounded-xl p-6 text-center" style="border-color: var(--color-border);">
+    <a href="https://www.mgm-sp.com" class="marker-underline" target="_blank" rel="noopener noreferrer">
       <h3 class="font-sans font-bold text-lg">mgm security partners</h3>
     </a>
-    <p class="text-sm text-gray-600 mt-2">München</p>
+    <p class="text-sm mt-2" style="color: var(--color-text-muted);">München</p>
   </div>
-  <div class="border border-gray-200 rounded-lg p-6 text-center">
-    <a href="https://dock.financial" class="hover:text-[#dea584]" target="_blank" rel="noopener noreferrer">
-      <h3 class="font-sans font-bold text-lg">Dock Financial</h3>
+  <div class="card-bg border rounded-xl p-6 text-center" style="border-color: var(--color-border);">
+    <h3 class="font-sans font-bold text-lg">Dock Financial</h3>
+    <p class="text-sm mt-2" style="color: var(--color-text-muted);">München</p>
+  </div>
+  <div class="card-bg border rounded-xl p-6 text-center" style="border-color: var(--color-border);">
+    <a href="https://www.zeiss.com" class="marker-underline" target="_blank" rel="noopener noreferrer">
+      <h3 class="font-sans font-bold text-lg">ZEISS</h3>
     </a>
-    <p class="text-sm text-gray-600 mt-2">München</p>
+    <p class="text-sm mt-2" style="color: var(--color-text-muted);">München</p>
+  </div>
+  <div class="card-bg border rounded-xl p-6 text-center" style="border-color: var(--color-border);">
+    <a href="https://luminovo.com" class="marker-underline" target="_blank" rel="noopener noreferrer">
+      <h3 class="font-sans font-bold text-lg">Luminovo</h3>
+    </a>
+    <p class="text-sm mt-2" style="color: var(--color-text-muted);">München</p>
   </div>
 </div>
 
@@ -60,4 +70,4 @@ Got a meeting room and like Rust? We're always looking for venues.
 - A great evening with the community
 - Our eternal gratitude and a spot on this page
 
-Interested? Reach out via {{ discord_link(text="Discord") }} or {{ meetup_link(text="Meetup") }}.
+Interested? Reach out via [Discord](https://discord.gg/SdB7yuEB) or [Meetup](https://www.meetup.com/de-DE/rust-munich/).

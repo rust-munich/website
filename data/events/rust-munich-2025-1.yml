@@ -1,0 +1,29 @@
+id: "rust-munich-2025-1"
+title: "Rust Munich 2025/1"
+date: "2025-04-02"
+time: "18:30"
+venue: "Mainmatter GmbH"
+address: "Hans-Sachs-Straße 12"
+city: "Munich"
+tags: ["meetup", "hybrid"]
+meetup_url: "https://www.meetup.com/rust-munich/events/306097261"
+slides_url: ""
+youtube_url: "https://www.youtube.com/watch?v=SboeO2BtKGo"
+ical_url: ""
+speakers: ["Marco", "Luca"]
+language: "en"
+draft: false
+description: |
+  Another edition of the rust munich meetup!
+
+  The on-site event has limited capacity, but as always, the event will be live streamed and recorded.
+
+  Agenda:
+
+    - 18:30 Hello: prep your beverage!
+    - 19:00 talk: "Intro to Gerust" by Marco
+    - 19:50 Food Break
+    - 20:15 talk: "An introduction to Pavex" by Luca
+    - 20:45 open space/discussion
+
+  Discord for Q/A + Discussions: https://discord.gg/bM5RzVrF2z

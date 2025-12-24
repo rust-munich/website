@@ -1,0 +1,20 @@
+// Light Theme (Default)
+// Clean, minimal light appearance
+
+:root {
+  --theme-bg: #ffffff;
+  --theme-bg-alt: #f6f6f6;
+  --theme-text: #20201f;
+  --theme-text-muted: #4a5568;
+  --theme-border: #e2e8f0;
+  --theme-card-bg: #ffffff;
+  --theme-card-hover: #f7fafc;
+  --theme-link: #20201f;
+  --theme-code-bg: #edf2f7;
+
+  // Section backgrounds - warm to cool flow
+  --theme-section-warm: #fdf6f0;    // Soft peachy cream
+  --theme-section-cool: #f5f3ff;    // Soft lavender
+  --theme-section-dark: #2d3748;    // Charcoal
+  --theme-section-dark-text: #f7fafc;
+}

@@ -1,0 +1,28 @@
+id: "rust-munich-2024-2"
+title: "Rust Munich 2024/2"
+date: "2024-07-23"
+time: "18:30"
+venue: "mgm security partners GmbH"
+address: "Taunusstraße 23"
+city: "Munich"
+tags: ["meetup", "hybrid"]
+meetup_url: "https://www.meetup.com/rust-munich/events/301062840"
+slides_url: ""
+youtube_url: ""
+ical_url: ""
+speakers: ["Heiko", "Sven"]
+language: "en"
+draft: false
+description: |
+  Another edition of the rust munich meetup!
+
+  The in-person event is limited to 30 people, but as always, the event live stream will be on and the event is being recorded.
+
+  Agenda:
+
+    - 18:30 Hello: prep your beverage!
+    - 19:00~ish talk: "Distributed Tracing" by Heiko
+    - 19:30~ish talk: "Building a DSL parser with Rust and PEGs" by Sven
+    - 20:00~ish open space/discussion
+
+  Discord for Q/A + Discussions: https://discord.gg/bM5RzVrF2z

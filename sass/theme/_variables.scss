@@ -1,0 +1,26 @@
+// Theme CSS Custom Properties
+// These variables are used throughout the site for consistent theming
+
+:root {
+  // Brand colors (constant across themes)
+  --rust-yellow: #ffc832;
+  --rust-red: #ce422b;
+  --rust-orange: #dea584;
+
+  // Semantic colors (change per theme)
+  --color-bg: var(--theme-bg);
+  --color-bg-alt: var(--theme-bg-alt);
+  --color-text: var(--theme-text);
+  --color-text-muted: var(--theme-text-muted);
+  --color-border: var(--theme-border);
+  --color-card-bg: var(--theme-card-bg);
+  --color-card-hover: var(--theme-card-hover);
+  --color-link: var(--theme-link);
+  --color-code-bg: var(--theme-code-bg);
+
+  // Section backgrounds
+  --section-warm: var(--theme-section-warm);
+  --section-cool: var(--theme-section-cool);
+  --section-dark: var(--theme-section-dark);
+  --section-dark-text: var(--theme-section-dark-text);
+}

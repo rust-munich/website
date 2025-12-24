@@ -1,51 +1,60 @@
 {% extends "base.html" %} {% block content %}
-<article class="max-w-none">
-    <div class="text-sm text-gray-500 mb-4">
-        <time datetime="{{ page.extra.date }}">{{ page.extra.date }}</time>{% if page.extra.time %}
-        — {{ page.extra.time }}{% endif %} {% if page.extra.venue %} • {{ page.extra.venue }}{%
-        endif %}
-    </div>
-    <h1 class="font-sans text-3xl md:text-4xl font-bold mb-6">{{ page.title }}</h1>
+<section class="section section-default">
+    <div class="section-inner">
+        <article class="max-w-3xl">
+            <div class="text-sm mb-5" style="color: var(--color-text-muted);">
+                <time datetime="{{ page.extra.date }}">{{ page.extra.date }}</time>{% if page.extra.time %}
+                — {{ page.extra.time }}{% endif %} {% if page.extra.venue %} • {{ page.extra.venue }}{%
+                endif %}
+            </div>
+            <h1 class="font-sans font-bold mb-8">{{ page.title }}</h1>
 
-    {% if page.extra.speakers %}
-    <div class="mb-4">
-        <strong class="text-rust-dark">Speakers: </strong>
-        <span class="text-gray-700">{{ page.extra.speakers | join(sep=', ') }}</span>
-    </div>
-    {% endif %} {% if page.extra.address %}
-    <div class="mb-4">
-        <strong class="text-rust-dark">Address: </strong>
-        <span class="text-gray-700"
-            >{{ page.extra.address }}{% if page.extra.city %}, {{ page.extra.city }}{% endif
-            %}</span
-        >
-    </div>
-    {% endif %}
+            {% if page.extra.speakers %}
+            <div class="mb-5 text-lg">
+                <strong>Speakers: </strong>
+                <span>{{ page.extra.speakers | join(sep=', ') }}</span>
+            </div>
+            {% endif %}
 
-    <div class="text-gray-700 leading-relaxed space-y-4 mb-8">{{ page.content | safe }}</div>
+            {% if page.extra.address %}
+            <div class="mb-5 text-lg">
+                <strong>Address: </strong>
+                <span>{{ page.extra.address }}{% if page.extra.city %}, {{ page.extra.city }}{% endif %}</span>
+            </div>
+            {% endif %}
 
-    <div class="flex flex-wrap gap-3 mb-8">
-        {% if page.extra.meetup_url %}<a
-            class="btn inline-block px-4 py-2 bg-rust-red text-white rounded font-sans text-sm hover:bg-rust-red/90 transition-colors"
-            href="{{ page.extra.meetup_url }}"
-            >RSVP on Meetup</a
-        >{% endif %} {% if page.extra.youtube_url %}<a
-            class="btn inline-block px-4 py-2 border border-gray-300 rounded font-sans text-sm hover:bg-yellow-50 hover:border-rust-yellow hover:transition-colors"
-            href="{{ page.extra.youtube_url }}"
-            >Video</a
-        >{% endif %} {% if page.extra.slides_url %}<a
-            class="btn inline-block px-4 py-2 border border-gray-300 rounded font-sans text-sm hover:bg-yellow-50 hover:border-rust-yellow hover:transition-colors"
-            href="{{ page.extra.slides_url }}"
-            >Slides</a
-        >{% endif %} {% if page.extra.ical_url %}<a
-            class="btn inline-block px-4 py-2 border border-gray-300 rounded font-sans text-sm hover:bg-yellow-50 hover:border-rust-yellow hover:transition-colors"
-            href="{{ page.extra.ical_url }}"
-            >iCal</a
-        >{% endif %}
+            <div class="leading-relaxed space-y-5 mb-10">{{ page.content | safe }}</div>
+
+            <div class="flex flex-wrap gap-4 mb-10">
+                {% if page.extra.meetup_url %}<a
+                    class="btn inline-block px-6 py-3 bg-rust-red text-white rounded font-sans hover:bg-rust-red/90 transition-colors"
+                    href="{{ page.extra.meetup_url }}"
+                    >RSVP on Meetup</a
+                >{% endif %}
+                {% if page.extra.youtube_url %}<a
+                    class="btn inline-block px-6 py-3 border-2 rounded font-sans transition-colors"
+                    style="border-color: var(--color-border);"
+                    href="{{ page.extra.youtube_url }}"
+                    >Video</a
+                >{% endif %}
+                {% if page.extra.slides_url %}<a
+                    class="btn inline-block px-6 py-3 border-2 rounded font-sans transition-colors"
+                    style="border-color: var(--color-border);"
+                    href="{{ page.extra.slides_url }}"
+                    >Slides</a
+                >{% endif %}
+                {% if page.extra.ical_url %}<a
+                    class="btn inline-block px-6 py-3 border-2 rounded font-sans transition-colors"
+                    style="border-color: var(--color-border);"
+                    href="{{ page.extra.ical_url }}"
+                    >iCal</a
+                >{% endif %}
+            </div>
+
+            {% if page.extra.map_embed %}
+            <div class="rounded-xl overflow-hidden">{{ page.extra.map_embed | safe }}</div>
+            {% endif %}
+        </article>
     </div>
-
-    {% if page.extra.map_embed %}
-    <div class="mt-8 rounded-lg overflow-hidden">{{ page.extra.map_embed | safe }}</div>
-    {% endif %}
-</article>
+</section>
 {% endblock content %}

@@ -1,9 +1,13 @@
 {% extends "base.html" %}
 {% block content %}
-<article class="max-w-none">
-    <h1 class="font-sans text-3xl md:text-4xl font-bold mb-6">{{ section.title }}</h1>
-    <div class="text-gray-700 leading-relaxed space-y-4">
-        {{ section.content | safe }}
+<section class="section section-default">
+    <div class="section-inner">
+        <article>
+            <h1 class="font-sans font-bold mb-8">{{ section.title }}</h1>
+            <div class="leading-relaxed space-y-5">
+                {{ section.content | safe }}
+            </div>
+        </article>
     </div>
-</article>
+</section>
 {% endblock content %}

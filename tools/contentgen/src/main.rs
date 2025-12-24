@@ -107,8 +107,9 @@ async fn main() -> Result<()> {
 
 fn generate_events(root: &Path) -> Result<()> {
     let data_dir = root.join("data").join("events");
-    let upcoming_dir = root.join("content").join("upcoming");
-    let past_dir = root.join("content").join("past");
+    let content_dir = root.join("content").join("events");
+    let upcoming_dir = content_dir.join("upcoming");
+    let past_dir = content_dir.join("past");
     fs::create_dir_all(&upcoming_dir)?;
     fs::create_dir_all(&past_dir)?;
 
@@ -139,6 +140,7 @@ fn generate_events(root: &Path) -> Result<()> {
             let content = format!(
                 r#"+++
 title = "{title}"
+date = {date}
 template = "event.html"
 [extra]
 {extra}
@@ -147,6 +149,7 @@ template = "event.html"
 {body}
 "#,
                 title = escape_toml(&event.title),
+                date = event.date,
                 extra = extra,
                 body = event.description.as_deref().unwrap_or("").trim_end()
             );

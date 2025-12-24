@@ -1,0 +1,28 @@
+id: "rust-munich-2023-5"
+title: "Rust Munich 2023/5"
+date: "2023-12-18"
+time: "19:00"
+venue: "Dock Financial GmbH"
+address: "Arnulfstraße 124"
+city: "Munich"
+tags: ["meetup", "hybrid"]
+meetup_url: "https://www.meetup.com/rust-munich/events/296429053"
+slides_url: ""
+youtube_url: ""
+ical_url: ""
+speakers: ["Bastian S.", "Simon"]
+language: "en"
+draft: false
+description: |
+  Another edition of the rust munich meetup!
+
+  The event live stream will be on and the event is recorded.
+
+  Agenda:
+
+    - 18:15 Hello: prep your beverage!
+    - 19:00 talk: "OpenAPI @ Dock" by Bastian S.
+    - 20:00 talk: "Workspaces and feature unification" by Simon
+    - 21:00 open space/discussion
+
+  Discord for Q/A + Discussions: https://discord.gg/bM5RzVrF2z

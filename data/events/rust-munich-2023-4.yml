@@ -1,0 +1,28 @@
+id: "rust-munich-2023-4"
+title: "Rust Munich 2023/4"
+date: "2023-09-05"
+time: "19:00"
+venue: "SAP Signavio"
+address: "Nymphenburger Str. 82"
+city: "Munich"
+tags: ["meetup", "hybrid"]
+meetup_url: "https://www.meetup.com/rust-munich/events/294186101"
+slides_url: ""
+youtube_url: ""
+ical_url: ""
+speakers: ["Vitaly", "Oliver"]
+language: "en"
+draft: false
+description: |
+  Another meetup of the rust munich meetup!
+
+  The event live stream will be on and the event is recorded.
+
+  Agenda:
+
+    - 18:30 Welcome: prep your beverage!
+    - 19:15 talk: "Profiling Async Applications in Rust" by Vitaly
+    - 20:00 talk: "Ensuring Memory Safety for the Transition from C/C++ to Rust" by Oliver
+    - 21:00 open space/discussion
+
+  Discord for Q/A + Discussions: https://discord.gg/bM5RzVrF2z

@@ -15,25 +15,18 @@
             href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400;600;700;800&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&display=swap"
             rel="stylesheet"
         />
-        <!--<script src="https://cdn.tailwindcss.com"></script>-->
         <link rel="stylesheet" href="{{ get_url(path='main.t.css') }}" />
+        <link rel="stylesheet" href="{{ get_url(path='styles.css') }}" />
         <script>
-            tailwind.config = {
-                theme: {
-                    extend: {
-                        colors: {
-                            "rust-orange": "#dea584",
-                            "rust-red": "#ce422b",
-                            "rust-yellow": "#ffc832",
-                            "rust-dark": "#20201f",
-                        },
-                        fontFamily: {
-                            sans: ["Fira Sans", "ui-sans-serif", "system-ui"],
-                            serif: ["Source Serif 4", "ui-serif", "Georgia", "serif"],
-                        },
-                    },
-                },
-            };
+            // Prevent flash of wrong theme
+            (function() {
+                var saved = localStorage.getItem('theme');
+                if (saved) {
+                    document.documentElement.setAttribute('data-theme', saved);
+                } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                    document.documentElement.setAttribute('data-theme', 'dark');
+                }
+            })();
         </script>
 
         <link
@@ -43,7 +36,7 @@
             href="{{ get_url(path='atom.xml') }}"
         />
     </head>
-    <body class="font-serif bg-white">
+    <body class="font-serif">
         <header class="sticky top-0 z-10 bg-gray-900 border-b border-gray-700">
             <div class="max-w-6xl mx-auto px-4">
                 <div
@@ -52,30 +45,45 @@
                     <div class="flex items-center gap-4">
                         <a
                             class="flex items-center no-underline border-b-0 hover:border-b-0 focus:border-b-0"
-                            href="{{ config.base_url | default(value='/') }}"
+                            href="{{ get_url(path='/') }}"
                         >
                             <img
-                                src="{{ config.base_url | default(value='/') }}{{ config.extra.logo_svg }}"
+                                src="{{ get_url(path=config.extra.logo_svg) }}"
                                 alt="Rust Munich logo"
                                 class="h-12 w-12 bg-white hover:bg-rust-yellow rounded-full p-1 transition-colors"
                             />
                         </a>
                         <a
                             class="font-sans text-2xl md:text-4xl font-bold text-white hover:text-rust-yellow transition-colors"
-                            href="{{ config.base_url | default(value='/') }}"
+                            href="{{ get_url(path='/') }}"
                             >Rust Munich</a
                         >
                     </div>
-                    {% include "partials/menu.html" %}
+                    <div class="flex items-center gap-4">
+                        {% include "partials/menu.html" %}
+                        <button
+                            type="button"
+                            id="theme-toggle"
+                            class="p-2 text-gray-400 hover:text-rust-yellow transition-colors"
+                            aria-label="Toggle dark mode"
+                        >
+                            <svg id="sun-icon" class="w-5 h-5 hidden" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" clip-rule="evenodd"></path>
+                            </svg>
+                            <svg id="moon-icon" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+                            </svg>
+                        </button>
+                    </div>
                 </div>
             </div>
         </header>
 
-        <main class="max-w-6xl mx-auto px-4 py-8 page-content">
+        <main class="page-content">
             {% block content %}{% endblock content %}
         </main>
 
-        <footer class="mt-12 py-8 border-t border-gray-200 text-gray-600">
+        <footer class="py-12" style="background-color: var(--color-bg-alt); color: var(--color-text-muted);">
             <div class="max-w-6xl mx-auto px-4">
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                     <!-- Social Links Column -->
@@ -83,7 +91,7 @@
                         <h3 class="font-sans font-bold mb-4">Connect</h3>
                         <div class="flex gap-3 flex-wrap">
                             <a
-                                class="inline-flex items-center justify-center w-10 h-10 border border-gray-300 rounded-full hover:bg-gray-100 hover:border-rust-yellow hover:text-rust-yellow transition-all"
+                                class="social-icon inline-flex items-center justify-center w-10 h-10 rounded-full transition-all"
                                 href="{{ config.extra.meetup }}"
                                 title="Rust Munich on Meetup"
                                 aria-label="Rust Munich on Meetup"
@@ -97,7 +105,7 @@
                                 </svg>
                             </a>
                             <a
-                                class="inline-flex items-center justify-center w-10 h-10 border border-gray-300 rounded-full hover:bg-gray-100 hover:border-rust-yellow hover:text-rust-yellow transition-all"
+                                class="social-icon inline-flex items-center justify-center w-10 h-10 rounded-full transition-all"
                                 href="{{ config.extra.discord }}"
                                 title="Rust Munich on Discord"
                                 aria-label="Rust Munich on Discord"
@@ -111,7 +119,7 @@
                                 </svg>
                             </a>
                             <a
-                                class="inline-flex items-center justify-center w-10 h-10 border border-gray-300 rounded-full hover:bg-gray-100 hover:border-rust-yellow hover:text-rust-yellow transition-all"
+                                class="social-icon inline-flex items-center justify-center w-10 h-10 rounded-full transition-all"
                                 href="{{ config.extra.youtube }}"
                                 title="Rust Munich on YouTube"
                                 aria-label="Rust Munich on YouTube"
@@ -125,7 +133,7 @@
                                 </svg>
                             </a>
                             <a
-                                class="inline-flex items-center justify-center w-10 h-10 border border-gray-300 rounded-full hover:bg-gray-100 hover:border-rust-yellow hover:text-rust-yellow transition-all"
+                                class="social-icon inline-flex items-center justify-center w-10 h-10 rounded-full transition-all"
                                 href="{{ config.extra.twitter }}"
                                 title="Rust Munich on X (Twitter)"
                                 aria-label="Rust Munich on X (Twitter)"
@@ -139,7 +147,7 @@
                                 </svg>
                             </a>
                             <a
-                                class="inline-flex items-center justify-center w-10 h-10 border border-gray-300 rounded-full hover:bg-gray-100 hover:border-rust-yellow hover:text-rust-yellow transition-all"
+                                class="social-icon inline-flex items-center justify-center w-10 h-10 rounded-full transition-all"
                                 href="{{ config.extra.linkedin }}"
                                 title="Rust Munich on LinkedIn"
                                 aria-label="Rust Munich on LinkedIn"
@@ -153,7 +161,7 @@
                                 </svg>
                             </a>
                             <a
-                                class="inline-flex items-center justify-center w-10 h-10 border border-gray-300 rounded-full hover:bg-gray-100 hover:border-rust-yellow hover:text-rust-yellow transition-all"
+                                class="social-icon inline-flex items-center justify-center w-10 h-10 rounded-full transition-all"
                                 href="{{ config.extra.github_org }}"
                                 title="Rust Munich on GitHub"
                                 aria-label="Rust Munich on GitHub"
@@ -198,9 +206,16 @@
                             </div>
                             <div>
                                 <a
-                                    href="{{ get_url(path='/sponsors/') }}"
+                                    href="{{ get_url(path='/contribute/') }}"
                                     class="marker-underline font-medium"
-                                    >Sponsors</a
+                                    >Contribute</a
+                                >
+                            </div>
+                            <div>
+                                <a
+                                    href="{{ get_url(path='/past-hosts/') }}"
+                                    class="marker-underline font-medium"
+                                    >Our Hosts</a
                                 >
                             </div>
                             <div>
@@ -242,5 +257,40 @@
                 </div>
             </div>
         </footer>
+
+        <script>
+            (function() {
+                const toggle = document.getElementById('theme-toggle');
+                const sunIcon = document.getElementById('sun-icon');
+                const moonIcon = document.getElementById('moon-icon');
+                const html = document.documentElement;
+
+                function setTheme(theme) {
+                    if (theme === 'dark') {
+                        html.setAttribute('data-theme', 'dark');
+                        sunIcon.classList.remove('hidden');
+                        moonIcon.classList.add('hidden');
+                    } else {
+                        html.setAttribute('data-theme', 'light');
+                        sunIcon.classList.add('hidden');
+                        moonIcon.classList.remove('hidden');
+                    }
+                    localStorage.setItem('theme', theme);
+                }
+
+                // Check for saved preference or system preference
+                const saved = localStorage.getItem('theme');
+                if (saved) {
+                    setTheme(saved);
+                } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                    setTheme('dark');
+                }
+
+                toggle.addEventListener('click', function() {
+                    const current = html.getAttribute('data-theme');
+                    setTheme(current === 'dark' ? 'light' : 'dark');
+                });
+            })();
+        </script>
     </body>
 </html>

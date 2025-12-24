@@ -1,0 +1,28 @@
+id: "rust-munich-2024-1"
+title: "Rust Munich 2024/1"
+date: "2024-05-14"
+time: "18:00"
+venue: "ZEISS"
+address: "Kistlerhofstraße 75"
+city: "Munich"
+tags: ["meetup", "hybrid"]
+meetup_url: "https://www.meetup.com/rust-munich/events/298507657"
+slides_url: ""
+youtube_url: ""
+ical_url: ""
+speakers: ["Heiko", "Kevin"]
+language: "en"
+draft: false
+description: |
+  The good news: We found a location!
+
+  This hybrid meetup features both in-person and remote participation options.
+
+  Agenda:
+
+    - 17:15 Hello: prep your beverage!
+    - 18:00 talk: "Distributed Tracing" by Heiko
+    - 18:30 talk: "Heat Cam with Rust" by Kevin
+    - 19:00 open space/discussion
+
+  Discord for Q/A + Discussions: https://discord.gg/bM5RzVrF2z

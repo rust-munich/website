@@ -1,11 +1,10 @@
-{% extends "base.html" %} {% block content %}
-
-{# Hero Section - Default background #}
+{% extends "base.html" %} {% block content %} {# Hero Section - Default background #}
 <section class="section section-default">
     <div class="section-inner">
         <h1 class="font-sans font-bold mb-8 leading-tight">Rust Munich</h1>
         <p class="text-xl md:text-2xl leading-relaxed mb-8 max-w-3xl">
-            Munich's Rust community since 2015. We meet quarterly to learn, share, and hack together.
+            Munich's Rust community since 2015. We meet quarterly to learn, share, and hack
+            together.
         </p>
         <div class="flex flex-wrap gap-4">
             <a
@@ -18,7 +17,7 @@
             <a
                 href="{{ config.extra.discord }}"
                 class="btn inline-block px-8 py-4 border-2 rounded font-sans font-semibold text-lg hover:bg-gray-50 transition-colors"
-                style="border-color: var(--color-border);"
+                style="border-color: var(--color-border)"
                 target="_blank"
                 rel="noopener noreferrer"
                 >Discord</a
@@ -55,23 +54,27 @@
             We host one event per quarter — alternating between talks and hands-on hacking evenings.
         </p>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div class="card-bg border rounded-xl p-8" style="border-color: var(--color-border);">
+            <div class="card-bg border rounded-xl p-8" style="border-color: var(--color-border)">
                 <h3 class="font-sans font-bold mb-4">Talks</h3>
-                <p class="text-sm mb-4" style="color: var(--color-text-muted);">Q1 & Q3 (odd quarters)</p>
+                <p class="text-sm mb-4" style="color: var(--color-text-muted)">
+                    Q1 & Q3 (odd quarters)
+                </p>
                 <p class="text-lg leading-relaxed">
                     Community members and guests share what they've built, learned, or discovered.
                     Typically 2-3 talks per evening, followed by discussion and networking.
                 </p>
             </div>
-            <div class="card-bg border rounded-xl p-8" style="border-color: var(--color-border);">
+            <div class="card-bg border rounded-xl p-8" style="border-color: var(--color-border)">
                 <h3 class="font-sans font-bold mb-4">Hacking Evenings</h3>
-                <p class="text-sm mb-4" style="color: var(--color-text-muted);">Q2 & Q4 (even quarters)</p>
+                <p class="text-sm mb-4" style="color: var(--color-text-muted)">
+                    Q2 & Q4 (even quarters)
+                </p>
                 <p class="text-lg leading-relaxed mb-4">
                     Small groups (&lt;25 people) working together on a shared challenge. We pick a
                     project, hack on it, and learn from each other.
                 </p>
-                <p class="text-sm" style="color: var(--color-text-muted);">
-                    Past projects:
+                <p class="text-sm" style="color: var(--color-text-muted)">
+                    Past Sessions:
                     <a
                         href="https://github.com/rust-munich/hack-evening-2024-4"
                         class="marker-underline"
@@ -104,10 +107,9 @@
     <div class="section-inner">
         <h2 class="font-sans font-bold mb-8">Upcoming</h2>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {% set upcoming = get_section(path="events/upcoming/_index.md") %}
-            {% for p in upcoming.pages | slice(start=0, end=4) %}
-                {% include "partials/event_card.html" %}
-            {% else %}
+            {% set upcoming = get_section(path="events/upcoming/_index.md") %} {% for p in
+            upcoming.pages | slice(start=0, end=4) %} {% include "partials/event_card.html" %} {%
+            else %}
             <p class="text-lg col-span-full">
                 No upcoming events right now. Join our
                 <a href="{{ config.extra.meetup }}" class="marker-underline font-medium">Meetup</a>
@@ -118,13 +120,13 @@
 
         <h2 class="font-sans font-bold mb-8 mt-16">Recent Events</h2>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {% set past = get_section(path="events/past/_index.md") %}
-            {% for p in past.pages | slice(start=0, end=4) %}
-                {% include "partials/event_card.html" %}
-            {% endfor %}
+            {% set past = get_section(path="events/past/_index.md") %} {% for p in past.pages |
+            slice(start=0, end=4) %} {% include "partials/event_card.html" %} {% endfor %}
         </div>
         <div class="mt-8">
-            <a href="{{ get_url(path='/events/past/') }}" class="marker-underline font-medium text-lg"
+            <a
+                href="{{ get_url(path='/events/past/') }}"
+                class="marker-underline font-medium text-lg"
                 >View all events →</a
             >
         </div>
@@ -137,7 +139,11 @@
         <h2 class="font-sans font-bold mb-6">Our Culture</h2>
         <p class="text-xl leading-relaxed max-w-3xl">
             We're a learning-first community. Whether you're writing your first
-            <code class="text-sm px-2 py-1 rounded" style="background-color: rgba(255,255,255,0.1);">fn main()</code>
+            <code
+                class="text-sm px-2 py-1 rounded"
+                style="background-color: rgba(255, 255, 255, 0.1)"
+                >fn main()</code
+            >
             or maintaining production Rust systems, you belong here. We value sharing knowledge,
             asking questions, and helping each other grow.
         </p>

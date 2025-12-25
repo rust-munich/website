@@ -1,4 +1,4 @@
 +++
-title = "Job Opportunities"
+title = "Rust Jobs"
 template = "jobs.html"
 +++

@@ -1,6 +1,6 @@
 # Zola configuration for rust-munich.de
 # For local dev, run: zola serve (automatically uses localhost)
-base_url = "https://rust-munich.github.io/website/"
+base_url = "https://rust-munich.de/"
 title = "Rust Munich"
 description = "Rust Munich meetup group — events, community, and resources."
 default_language = "en"

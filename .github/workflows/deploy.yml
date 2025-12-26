@@ -29,26 +29,11 @@ jobs:
           toolchain: stable
           override: true
 
-      - name: Build contentgen
-        run: cargo build --release --bin contentgen
+      - name: Setup Zola + X
+        run: make setup
 
-      - name: Generate content
-        run: |
-          ./target/release/contentgen --root . events
-          ./target/release/contentgen --root . jobs
-
-      - name: Setup Zola
-        uses: taiki-e/install-action@v2
-        with:
-          tool: zola@0.21.0
-
-      - name: Build with Zola
-        run: zola build
-
-      - name: Build with Tailwind
-        run: |
-          npm install tailwindcss @tailwindcss/cli @tailwindcss/typography
-          npx @tailwindcss/cli -m --optimize -i styles/tailwind.css -o public/main.t.css
+      - name: Build
+        run: make build
 
       - name: Setup Pages
         if: github.ref == 'refs/heads/main'

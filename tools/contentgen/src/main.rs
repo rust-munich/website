@@ -381,7 +381,7 @@ fn format_job_content(job: &Job, lang: &str) -> String {
     } else {
         &job.description
     };
-    content.push_str(description);
+    content.push_str(&linkify(description));
     content.push_str("\n\n");
 
     // Requirements section - use German if available and requested

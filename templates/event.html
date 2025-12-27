@@ -11,14 +11,14 @@
 
             {% if page.extra.speakers %}
             <div class="mb-5 text-lg">
-                <strong>Speakers: </strong>
+                <strong>{{ trans(key="speakers_label", lang=lang) }} </strong>
                 <span>{{ page.extra.speakers | join(sep=', ') }}</span>
             </div>
             {% endif %}
 
             {% if page.extra.address %}
             <div class="mb-5 text-lg">
-                <strong>Address: </strong>
+                <strong>{{ trans(key="address_label", lang=lang) }} </strong>
                 <span>{{ page.extra.address }}{% if page.extra.city %}, {{ page.extra.city }}{% endif %}</span>
             </div>
             {% endif %}
@@ -29,25 +29,25 @@
                 {% if page.extra.meetup_url %}<a
                     class="btn inline-block px-6 py-3 bg-rust-red text-white rounded font-sans hover:bg-rust-red/90 transition-colors"
                     href="{{ page.extra.meetup_url }}"
-                    >RSVP on Meetup</a
+                    >{% if page.extra.is_past %}{{ trans(key="btn_view_meetup", lang=lang) }}{% else %}{{ trans(key="btn_rsvp", lang=lang) }}{% endif %}</a
                 >{% endif %}
                 {% if page.extra.youtube_url %}<a
                     class="btn inline-block px-6 py-3 border-2 rounded font-sans transition-colors"
                     style="border-color: var(--color-border);"
                     href="{{ page.extra.youtube_url }}"
-                    >Video</a
+                    >{{ trans(key="btn_video", lang=lang) }}</a
                 >{% endif %}
                 {% if page.extra.slides_url %}<a
                     class="btn inline-block px-6 py-3 border-2 rounded font-sans transition-colors"
                     style="border-color: var(--color-border);"
                     href="{{ page.extra.slides_url }}"
-                    >Slides</a
+                    >{{ trans(key="btn_slides", lang=lang) }}</a
                 >{% endif %}
                 {% if page.extra.ical_url %}<a
                     class="btn inline-block px-6 py-3 border-2 rounded font-sans transition-colors"
                     style="border-color: var(--color-border);"
                     href="{{ page.extra.ical_url }}"
-                    >iCal</a
+                    >{{ trans(key="btn_ical", lang=lang) }}</a
                 >{% endif %}
             </div>
 

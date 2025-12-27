@@ -3,8 +3,7 @@
     <div class="section-inner">
         <h1 class="font-sans font-bold mb-8 leading-tight">Rust Munich</h1>
         <p class="text-xl md:text-2xl leading-relaxed mb-8 max-w-3xl">
-            Munich's Rust community since 2015. We meet quarterly to learn, share, and hack
-            together.
+            {{ section.extra.hero_tagline }}
         </p>
         <div class="flex flex-wrap gap-4">
             <a
@@ -12,7 +11,7 @@
                 class="btn inline-block px-8 py-4 bg-rust-red text-white rounded font-sans font-semibold text-lg hover:bg-rust-red/90 transition-colors"
                 target="_blank"
                 rel="noopener noreferrer"
-                >Join on Meetup</a
+                >{{ section.extra.join_meetup }}</a
             >
             <a
                 href="{{ config.extra.discord }}"
@@ -31,16 +30,16 @@
     <div class="section-inner">
         <div class="grid grid-cols-1 md:grid-cols-3 gap-12 text-center">
             <div>
-                <div class="stat-number text-rust-red">2015</div>
-                <div class="stat-label">Founded</div>
+                <div class="stat-number text-rust-red">{{ section.extra.stat_founded_value }}</div>
+                <div class="stat-label">{{ section.extra.stat_founded_label }}</div>
             </div>
             <div>
-                <div class="stat-number text-rust-red">1,600+</div>
-                <div class="stat-label">Members</div>
+                <div class="stat-number text-rust-red">{{ section.extra.stat_members_value }}</div>
+                <div class="stat-label">{{ section.extra.stat_members_label }}</div>
             </div>
             <div>
-                <div class="stat-number text-rust-red">45+</div>
-                <div class="stat-label">Events</div>
+                <div class="stat-number text-rust-red">{{ section.extra.stat_events_value }}</div>
+                <div class="stat-label">{{ section.extra.stat_events_label }}</div>
             </div>
         </div>
     </div>
@@ -49,54 +48,42 @@
 {# How We Meet - Default background #}
 <section class="section section-default">
     <div class="section-inner">
-        <h2 class="font-sans font-bold mb-8">How We Meet</h2>
+        <h2 class="font-sans font-bold mb-8">{{ section.extra.how_we_meet_title }}</h2>
         <p class="text-xl leading-relaxed mb-10 max-w-3xl">
-            We host one event per quarter — alternating between talks and hands-on hacking evenings.
+            {{ section.extra.how_we_meet_desc }}
         </p>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
             <div class="card-bg border rounded-xl p-8" style="border-color: var(--color-border)">
-                <h3 class="font-sans font-bold mb-4">Talks</h3>
+                <h3 class="font-sans font-bold mb-4">{{ section.extra.talks_title }}</h3>
                 <p class="text-sm mb-4" style="color: var(--color-text-muted)">
-                    Q1 & Q3 (odd quarters)
+                    {{ section.extra.talks_schedule }}
                 </p>
                 <p class="text-lg leading-relaxed">
-                    Community members and guests share what they've built, learned, or discovered.
-                    Typically 1-2 talks per evening, followed by discussion and networking.
+                    {{ section.extra.talks_desc }}
                 </p>
             </div>
             <div class="card-bg border rounded-xl p-8" style="border-color: var(--color-border)">
-                <h3 class="font-sans font-bold mb-4">Hacking Evenings</h3>
+                <h3 class="font-sans font-bold mb-4">{{ section.extra.hacking_title }}</h3>
                 <p class="text-sm mb-4" style="color: var(--color-text-muted)">
-                    Q2 & Q4 (even quarters)
+                    {{ section.extra.hacking_schedule }}
                 </p>
                 <p class="text-lg leading-relaxed mb-4">
-                    Small groups (&lt;25 people) working together on a shared challenge. We pick a
-                    project, hack on it, and learn from each other.
+                    {{ section.extra.hacking_desc }}
                 </p>
+                {% if section.extra.hack_sessions %}
                 <p class="text-sm" style="color: var(--color-text-muted)">
-                    Past Sessions:
+                    {{ section.extra.past_sessions_label }}
+                    {% for session in section.extra.hack_sessions %}
                     <a
-                        href="https://github.com/rust-munich/hack-evening-2024-4"
+                        href="{{ session.url }}"
                         class="marker-underline"
                         target="_blank"
                         rel="noopener noreferrer"
-                        >2024/4</a
-                    >,
-                    <a
-                        href="https://github.com/rust-munich/hack-evening-2025-2"
-                        class="marker-underline"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        >2025/2</a
-                    >,
-                    <a
-                        href="https://github.com/rust-munich/hack-evening-2025-12"
-                        class="marker-underline"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        >2025/4</a
-                    >
+                        >{{ session.label }}</a
+                    >{% if not loop.last %}, {% endif %}
+                    {% endfor %}
                 </p>
+                {% endif %}
             </div>
         </div>
     </div>
@@ -105,29 +92,29 @@
 {# Events Section - Cool background #}
 <section class="section section-cool">
     <div class="section-inner">
-        <h2 class="font-sans font-bold mb-8">Upcoming</h2>
+        <h2 class="font-sans font-bold mb-8">{{ section.extra.upcoming_title }}</h2>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
             {% set upcoming = get_section(path="events/upcoming/_index.md") %} {% for p in
             upcoming.pages | slice(start=0, end=4) %} {% include "partials/event_card.html" %} {%
             else %}
             <p class="text-lg col-span-full">
-                No upcoming events right now. Join our
+                {{ section.extra.no_upcoming_events }}
                 <a href="{{ config.extra.meetup }}" class="marker-underline font-medium">Meetup</a>
-                to get notified.
+                {{ section.extra.to_get_notified }}
             </p>
             {% endfor %}
         </div>
 
-        <h2 class="font-sans font-bold mb-8 mt-16">Recent Events</h2>
+        <h2 class="font-sans font-bold mb-8 mt-16">{{ section.extra.recent_events_title }}</h2>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
             {% set past = get_section(path="events/past/_index.md") %} {% for p in past.pages |
             slice(start=0, end=4) %} {% include "partials/event_card.html" %} {% endfor %}
         </div>
         <div class="mt-8">
             <a
-                href="{{ get_url(path='/events/past/') }}"
+                href="{{ get_url(path='/events/past/', lang=lang) }}"
                 class="marker-underline font-medium text-lg"
-                >View all events →</a
+                >{{ section.extra.view_all_events }}</a
             >
         </div>
     </div>
@@ -136,16 +123,15 @@
 {# Culture Section - Dark background #}
 <section class="section section-dark">
     <div class="section-inner">
-        <h2 class="font-sans font-bold mb-6">Our Culture</h2>
+        <h2 class="font-sans font-bold mb-6">{{ section.extra.culture_title }}</h2>
         <p class="text-xl leading-relaxed max-w-3xl">
-            We're a learning-first community. Whether you're writing your first
+            {{ section.extra.culture_text_start }}
             <code
                 class="text-sm px-2 py-1 rounded"
                 style="background-color: rgba(255, 255, 255, 0.1)"
-                >fn main()</code
+                >{{ section.extra.culture_code }}</code
             >
-            or maintaining production Rust systems, you belong here. We value sharing knowledge,
-            asking questions, and helping each other grow.
+            {{ section.extra.culture_text_end }}
         </p>
     </div>
 </section>

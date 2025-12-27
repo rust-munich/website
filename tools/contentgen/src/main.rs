@@ -1,6 +1,7 @@
 use anyhow::{Context, Result};
 use chrono::{Local, NaiveDate};
 use clap::{Parser, Subcommand};
+use regex::Regex;
 use serde::{Deserialize, Serialize};
 use std::{
     fs,
@@ -88,6 +89,10 @@ struct Job {
     description: String,
     requirements: Option<Vec<String>>,
     benefits: Option<Vec<String>>,
+    // German translations (optional)
+    description_de: Option<String>,
+    requirements_de: Option<Vec<String>>,
+    benefits_de: Option<Vec<String>>,
 }
 
 #[tokio::main]
@@ -134,9 +139,11 @@ fn generate_events(root: &Path) -> Result<()> {
             })?;
 
             let is_past = date < today;
-            let filename = format!("{}-{}.md", event.date, slugify(&event.title));
-
+            let slug = slugify(&event.title);
             let extra = build_event_extra(&event, is_past);
+            let raw_body = event.description.as_deref().unwrap_or("");
+            let body = linkify(raw_body).trim_end().to_string();
+
             let content = format!(
                 r#"+++
 title = "{title}"
@@ -151,15 +158,18 @@ template = "event.html"
                 title = escape_toml(&event.title),
                 date = event.date,
                 extra = extra,
-                body = event.description.as_deref().unwrap_or("").trim_end()
+                body = body
             );
 
-            let target = if is_past {
-                past_dir.join(filename)
-            } else {
-                upcoming_dir.join(filename)
-            };
-            fs::write(target, content)?;
+            let target_dir = if is_past { &past_dir } else { &upcoming_dir };
+
+            // Generate English version (.md)
+            let filename_en = format!("{}-{}.md", event.date, slug);
+            fs::write(target_dir.join(filename_en), &content)?;
+
+            // Generate German version (.de.md) - same content for now
+            let filename_de = format!("{}-{}.de.md", event.date, slug);
+            fs::write(target_dir.join(filename_de), &content)?;
         }
     }
     println!("Generated event pages.");
@@ -210,9 +220,11 @@ fn generate_jobs(root: &Path) -> Result<()> {
                 }
             }
 
-            let filename = format!("{}.md", job.id);
             let extra = build_job_extra(&job);
-            let content = format!(
+
+            // Generate English version (.md)
+            let filename_en = format!("{}.md", job.id);
+            let content_en = format!(
                 r#"+++
 title = "{title}"
 template = "job.html"
@@ -224,11 +236,29 @@ template = "job.html"
 "#,
                 title = escape_toml(&job.title),
                 extra = extra,
-                body = format_job_content(&job)
+                body = format_job_content(&job, "en")
             );
+            let target_en = jobs_dir.join(filename_en);
+            fs::write(target_en, content_en)?;
 
-            let target = jobs_dir.join(filename);
-            fs::write(target, content)?;
+            // Generate German version (.de.md)
+            let filename_de = format!("{}.de.md", job.id);
+            let content_de = format!(
+                r#"+++
+title = "{title}"
+template = "job.html"
+[extra]
+{extra}
++++
+
+{body}
+"#,
+                title = escape_toml(&job.title),
+                extra = extra,
+                body = format_job_content(&job, "de")
+            );
+            let target_de = jobs_dir.join(filename_de);
+            fs::write(target_de, content_de)?;
         }
     }
     println!("Generated job pages.");
@@ -342,26 +372,45 @@ fn build_job_extra(job: &Job) -> String {
     parts.join("\n")
 }
 
-fn format_job_content(job: &Job) -> String {
+fn format_job_content(job: &Job, lang: &str) -> String {
     let mut content = String::new();
 
-    // Main description
-    content.push_str(&job.description);
+    // Main description - use German if available and requested, otherwise English
+    let description = if lang == "de" {
+        job.description_de.as_deref().unwrap_or(&job.description)
+    } else {
+        &job.description
+    };
+    content.push_str(description);
     content.push_str("\n\n");
 
-    // Requirements section
-    if let Some(requirements) = &job.requirements {
-        content.push_str("## Requirements\n\n");
-        for req in requirements {
+    // Requirements section - use German if available and requested
+    let requirements = if lang == "de" {
+        job.requirements_de.as_ref().or(job.requirements.as_ref())
+    } else {
+        job.requirements.as_ref()
+    };
+    if let Some(reqs) = requirements {
+        let header = if lang == "de" { "## Anforderungen" } else { "## Requirements" };
+        content.push_str(header);
+        content.push_str("\n\n");
+        for req in reqs {
             content.push_str(&format!("- {}\n", req));
         }
         content.push_str("\n");
     }
 
-    // Benefits section
-    if let Some(benefits) = &job.benefits {
-        content.push_str("## Benefits\n\n");
-        for benefit in benefits {
+    // Benefits section - use German if available and requested
+    let benefits = if lang == "de" {
+        job.benefits_de.as_ref().or(job.benefits.as_ref())
+    } else {
+        job.benefits.as_ref()
+    };
+    if let Some(bens) = benefits {
+        let header = if lang == "de" { "## Vorteile" } else { "## Benefits" };
+        content.push_str(header);
+        content.push_str("\n\n");
+        for benefit in bens {
             content.push_str(&format!("- {}\n", benefit));
         }
         content.push_str("\n");
@@ -373,6 +422,50 @@ fn format_job_content(job: &Job) -> String {
 // Shared helper functions
 fn escape_toml(s: &str) -> String {
     s.replace('"', "\\\"")
+}
+
+/// Convert raw URLs in text to markdown auto-links.
+/// Wraps bare URLs in angle brackets so markdown renders them as clickable links.
+fn linkify(text: &str) -> String {
+    // Match bare URLs (http/https) that aren't already in markdown link syntax or angle brackets
+    // Negative lookbehind for ]( or < to avoid matching URLs already in markdown links
+    let url_pattern = Regex::new(
+        r"(?P<url>https?://[^\s<>\[\]]+)"
+    ).unwrap();
+
+    // Replace URLs with markdown auto-link syntax <url>
+    // But skip if already wrapped in < > or inside markdown link syntax
+    let mut result = String::new();
+    let mut last_end = 0;
+
+    for caps in url_pattern.captures_iter(text) {
+        let m = caps.get(0).unwrap();
+        let start = m.start();
+        let url = &caps["url"];
+
+        // Check if this URL is already in a markdown link or auto-link
+        let before = &text[..start];
+        let after_end = m.end();
+        let after_char = text.chars().nth(after_end);
+
+        // Skip if preceded by ]( (markdown link) or < (auto-link)
+        let is_markdown_link = before.ends_with("](");
+        let is_auto_link = before.ends_with('<') || after_char == Some('>');
+
+        result.push_str(&text[last_end..start]);
+
+        if is_markdown_link || is_auto_link {
+            result.push_str(url);
+        } else {
+            result.push('<');
+            result.push_str(url);
+            result.push('>');
+        }
+        last_end = after_end;
+    }
+    result.push_str(&text[last_end..]);
+
+    result
 }
 
 // Meetup publishing functionality (from eventgen)

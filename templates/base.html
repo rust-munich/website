@@ -53,7 +53,7 @@
                     <div class="flex items-center gap-4">
                         <a
                             class="flex items-center no-underline border-b-0 hover:border-b-0 focus:border-b-0"
-                            href="{{ get_url(path='/') }}"
+                            href="{{ get_url(path='/', lang=lang) }}"
                         >
                             <img
                                 src="{{ get_url(path=config.extra.logo_svg) }}"
@@ -63,7 +63,7 @@
                         </a>
                         <a
                             class="font-sans text-xl md:text-3xl font-bold text-white hover:text-rust-yellow transition-colors"
-                            href="{{ get_url(path='/') }}"
+                            href="{{ get_url(path='/', lang=lang) }}"
                             >Rust Munich</a
                         >
                     </div>
@@ -75,12 +75,24 @@
                         >
                             {% for item in config.extra.menu %}
                             <a
-                                href="{{ get_url(path=item.path) }}"
+                                href="{{ get_url(path=item.path, lang=lang) }}"
                                 class="px-3 py-2 text-white hover:bg-gray-800 hover:text-rust-yellow rounded transition-colors"
-                                >{{ item.title }}</a
+                                >{{ trans(key=item.key, lang=lang) }}</a
                             >
                             {% endfor %}
                         </nav>
+                        <!-- Language switcher -->
+                        <div class="flex items-center gap-1 font-sans text-sm">
+                            {% if lang == "en" %}
+                                <span class="px-2 py-1 text-rust-yellow font-semibold">EN</span>
+                                <span class="text-gray-600">|</span>
+                                <a href="{{ current_url | replace(from=config.base_url, to=config.base_url ~ 'de/') }}" class="px-2 py-1 text-gray-400 hover:text-rust-yellow transition-colors">DE</a>
+                            {% else %}
+                                <a href="{{ current_url | replace(from=config.base_url ~ 'de/', to=config.base_url) }}" class="px-2 py-1 text-gray-400 hover:text-rust-yellow transition-colors">EN</a>
+                                <span class="text-gray-600">|</span>
+                                <span class="px-2 py-1 text-rust-yellow font-semibold">DE</span>
+                            {% endif %}
+                        </div>
                         <!-- Theme toggle -->
                         <button
                             type="button"
@@ -154,9 +166,9 @@
                 <nav id="mobile-menu" class="hidden md:hidden pb-4 font-sans" aria-label="Mobile">
                     {% for item in config.extra.menu %}
                     <a
-                        href="{{ get_url(path=item.path) }}"
+                        href="{{ get_url(path=item.path, lang=lang) }}"
                         class="block px-3 py-2 text-white hover:bg-gray-800 hover:text-rust-yellow rounded transition-colors"
-                        >{{ item.title }}</a
+                        >{{ trans(key=item.key, lang=lang) }}</a
                     >
                     {% endfor %}
                 </nav>
@@ -173,7 +185,7 @@
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                     <!-- Social Links Column -->
                     <div>
-                        <h3 class="font-sans font-bold mb-4">Connect</h3>
+                        <h3 class="font-sans font-bold mb-4">{{ trans(key="connect", lang=lang) }}</h3>
                         <div class="flex gap-3 flex-wrap">
                             <a
                                 class="social-icon inline-flex items-center justify-center w-10 h-10 rounded-full transition-all"
@@ -264,71 +276,70 @@
 
                     <!-- Code of Conduct Column -->
                     <div>
-                        <h3 class="font-sans font-bold mb-4">Code of Conduct</h3>
+                        <h3 class="font-sans font-bold mb-4">{{ trans(key="code_of_conduct", lang=lang) }}</h3>
                         <p class="text-sm leading-relaxed mb-3">
-                            Rust Munich uses the
+                            {{ trans(key="code_of_conduct_text", lang=lang) }}
                             <a
                                 href="{% if lang == 'de' %}https://berlincodeofconduct.org/de{% else %}https://berlincodeofconduct.org{% endif %}"
                                 class="marker-underline font-medium"
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                >Berlin Code of Conduct</a
-                            >. Our primary goal is to be inclusive to the largest number of
-                            contributors, with the most varied and diverse backgrounds possible.
+                                >{{ trans(key="code_of_conduct_link", lang=lang) }}</a
+                            >. {{ trans(key="code_of_conduct_desc", lang=lang) }}
                         </p>
                     </div>
 
                     <!-- Navigation Column -->
                     <div>
-                        <h3 class="font-sans font-bold mb-4">Links</h3>
+                        <h3 class="font-sans font-bold mb-4">{{ trans(key="links", lang=lang) }}</h3>
                         <div class="space-y-2 text-sm">
                             <div>
                                 <a
-                                    href="{{ get_url(path='/about/') }}"
+                                    href="{{ get_url(path='/about/', lang=lang) }}"
                                     class="marker-underline font-medium"
-                                    >About</a
+                                    >{{ trans(key="about", lang=lang) }}</a
                                 >
                             </div>
                             <div>
                                 <a
-                                    href="{{ get_url(path='/contribute/') }}"
+                                    href="{{ get_url(path='/contribute/', lang=lang) }}"
                                     class="marker-underline font-medium"
-                                    >Contribute</a
+                                    >{{ trans(key="contribute", lang=lang) }}</a
                                 >
                             </div>
                             <div>
                                 <a
-                                    href="{{ get_url(path='/past-hosts/') }}"
+                                    href="{{ get_url(path='/past-hosts/', lang=lang) }}"
                                     class="marker-underline font-medium"
-                                    >Our Hosts</a
+                                    >{{ trans(key="our_hosts", lang=lang) }}</a
                                 >
                             </div>
                             <div>
                                 <a
-                                    href="{{ get_url(path='/privacy/') }}"
+                                    href="{{ get_url(path='/privacy/', lang=lang) }}"
                                     class="marker-underline font-medium"
-                                    >Privacy Policy</a
+                                    >{{ trans(key="privacy_policy", lang=lang) }}</a
                                 >
                             </div>
                             <div>
                                 <a
-                                    href="{{ get_url(path='/imprint/') }}"
+                                    href="{{ get_url(path='/imprint/', lang=lang) }}"
                                     class="marker-underline font-medium"
-                                    >Imprint</a
+                                    >{{ trans(key="imprint", lang=lang) }}</a
                                 >
                             </div>
                             {% if config.generate_feeds %}
                             <div>
                                 <a
-                                    href="{{ get_url(path='atom.xml') }}"
+                                    href="{{ get_url(path='atom.xml', lang=lang) }}"
                                     class="marker-underline font-medium"
-                                    >RSS Feed</a
+                                    >{{ trans(key="rss_feed", lang=lang) }}</a
                                 >
                             </div>
                             {% endif %}
                         </div>
                         <div class="text-xs mt-6 text-gray-500">
-                            Built with
+                            {{ trans(key="built_with", lang=lang) }}
                             <a
                                 href="https://www.getzola.org"
                                 class="marker-underline"

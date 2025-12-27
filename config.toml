@@ -9,9 +9,47 @@ build_search_index = true
 minify_html = true
 generate_feeds = true
 
-# i18n
+# i18n - German translation
 [languages.de]
 title = "Rust München"
+description = "Rust München Meetup-Gruppe — Veranstaltungen, Community und Ressourcen."
+generate_feeds = true
+
+[languages.de.translations]
+# Menu
+menu_home = "Startseite"
+menu_events = "Veranstaltungen"
+menu_jobs = "Rust Jobs"
+menu_neighborhood = "Umgebung"
+
+# Footer
+connect = "Verbinden"
+code_of_conduct = "Verhaltenskodex"
+code_of_conduct_text = "Rust München nutzt den"
+code_of_conduct_link = "Berlin Code of Conduct"
+code_of_conduct_desc = "Unser Ziel ist es, möglichst viele Menschen mit unterschiedlichsten Hintergründen einzubeziehen."
+links = "Links"
+about = "Über uns"
+contribute = "Mitmachen"
+our_hosts = "Unsere Gastgeber"
+privacy_policy = "Datenschutz"
+imprint = "Impressum"
+rss_feed = "RSS Feed"
+built_with = "Erstellt mit"
+
+# Event templates
+speakers_label = "Sprecher:"
+address_label = "Adresse:"
+btn_rsvp = "RSVP auf Meetup"
+btn_view_meetup = "Auf Meetup ansehen"
+btn_video = "Video"
+btn_slides = "Folien"
+btn_ical = "iCal"
+
+# Job templates
+btn_apply = "Jetzt bewerben"
+posted_label = "Veröffentlicht:"
+deadline_label = "Bewerbungsfrist:"
 
 # Markdown extra
 [markdown]
@@ -40,19 +78,56 @@ logo_svg = "img/rust-munich-logo.svg"
 # This boolean is used by templates to hide/show draft notices
 show_drafts = false
 
-# Menu configuration
+# English translations (default language)
+[translations]
+# Menu
+menu_home = "Home"
+menu_events = "Events"
+menu_jobs = "Rust Jobs"
+menu_neighborhood = "Neighborhood"
+
+# Footer
+connect = "Connect"
+code_of_conduct = "Code of Conduct"
+code_of_conduct_text = "Rust Munich uses the"
+code_of_conduct_link = "Berlin Code of Conduct"
+code_of_conduct_desc = "Our primary goal is to be inclusive to the largest number of contributors, with the most varied and diverse backgrounds possible."
+links = "Links"
+about = "About"
+contribute = "Contribute"
+our_hosts = "Our Hosts"
+privacy_policy = "Privacy Policy"
+imprint = "Imprint"
+rss_feed = "RSS Feed"
+built_with = "Built with"
+
+# Event templates
+speakers_label = "Speakers:"
+address_label = "Address:"
+btn_rsvp = "RSVP on Meetup"
+btn_view_meetup = "View on Meetup"
+btn_video = "Video"
+btn_slides = "Slides"
+btn_ical = "iCal"
+
+# Job templates
+btn_apply = "Apply Now"
+posted_label = "Posted:"
+deadline_label = "Application deadline:"
+
+# Menu configuration (paths only, titles come from translations)
 [[extra.menu]]
-title = "Home"
+key = "menu_home"
 path = "/"
 
 [[extra.menu]]
-title = "Events"
+key = "menu_events"
 path = "events/past/"
 
 [[extra.menu]]
-title = "Rust Jobs"
+key = "menu_jobs"
 path = "jobs/"
 
 [[extra.menu]]
-title = "Neighborhood"
+key = "menu_neighborhood"
 path = "umgebung/"

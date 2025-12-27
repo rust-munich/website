@@ -3,7 +3,7 @@
     <div class="section-inner">
         <h1 class="font-sans font-bold mb-4">{{ section.title }}</h1>
         <p class="text-xl mb-10" style="color: var(--color-text-muted);">
-            Rust positions from companies in and around Munich. All listings are community-submitted and reviewed.
+            {{ section.extra.page_description }}
         </p>
 
         {% if section.pages | length > 0 %}
@@ -84,9 +84,9 @@
                     <a
                         href="{{ page.permalink | safe }}"
                         class="btn inline-block px-4 py-2 bg-rust-red text-white rounded font-sans hover:bg-rust-red/90 transition-colors"
-                    >View Details</a>
+                    >{{ section.extra.view_details }}</a>
                     <span class="text-sm" style="color: var(--color-text-muted);">
-                        Posted {{ page.extra.posted_date | date(format="%b %d, %Y") }}
+                        {{ section.extra.posted_label }} {{ page.extra.posted_date | date(format="%b %d, %Y") }}
                     </span>
                 </div>
             </article>
@@ -94,16 +94,16 @@
         </div>
         {% else %}
         <div class="text-center py-20 mb-16 rounded-xl" style="background-color: var(--color-bg-alt);">
-            <p class="text-2xl mb-5">No open positions right now.</p>
+            <p class="text-2xl mb-5">{{ section.extra.no_jobs_title }}</p>
             <p class="text-lg mb-8" style="color: var(--color-text-muted);">
-                Join our community to hear about opportunities first.
+                {{ section.extra.no_jobs_desc }}
             </p>
             <a
                 href="{{ config.extra.meetup }}"
                 class="btn inline-block px-8 py-4 bg-rust-red text-white rounded font-sans font-semibold text-lg hover:bg-rust-red/90 transition-colors"
                 target="_blank"
                 rel="noopener noreferrer"
-            >Join on Meetup</a>
+            >{{ section.extra.join_meetup }}</a>
         </div>
         {% endif %}
     </div>
@@ -111,17 +111,17 @@
 
 <section class="section section-warm">
     <div class="section-inner">
-        <h2 class="font-sans font-bold mb-6">Post a Job</h2>
+        <h2 class="font-sans font-bold mb-6">{{ section.extra.post_job_title }}</h2>
         <p class="text-lg mb-6">
-            Hiring Rust developers in Munich? Submit your listing via Pull Request.
+            {{ section.extra.post_job_intro }}
         </p>
         <ol class="list-decimal list-inside space-y-3 text-lg mb-8">
-            <li>Fork the <a href="{{ config.extra.website_github }}" class="marker-underline font-medium" target="_blank" rel="noopener noreferrer">website repository</a></li>
-            <li>Add a YAML file to <code class="px-2 py-1 rounded text-sm" style="background-color: var(--color-code-bg);">data/jobs/</code> (<a href="https://github.com/rust-munich/website/blob/main/data/jobs/example-rust-developer.yml" class="marker-underline" target="_blank" rel="noopener noreferrer">see example</a>)</li>
-            <li>Open a Pull Request</li>
+            <li>{{ section.extra.post_job_step1 }} <a href="{{ config.extra.website_github }}" class="marker-underline font-medium" target="_blank" rel="noopener noreferrer">{{ section.extra.post_job_repo_link }}</a></li>
+            <li>{{ section.extra.post_job_step2_prefix }} <code class="px-2 py-1 rounded text-sm" style="background-color: var(--color-code-bg);">{{ section.extra.post_job_step2_path }}</code> (<a href="https://github.com/rust-munich/website/blob/main/data/jobs/example-rust-developer.yml" class="marker-underline" target="_blank" rel="noopener noreferrer">{{ section.extra.post_job_step2_suffix }}</a>)</li>
+            <li>{{ section.extra.post_job_step3 }}</li>
         </ol>
         <p style="color: var(--color-text-muted);">
-            Free for companies that support the community (hosting, sponsoring, or speaking at events).
+            {{ section.extra.post_job_note }}
         </p>
     </div>
 </section>

@@ -15,6 +15,8 @@ application_url: "https://example-tech.com/careers/rust-developer"
 logo_url: "https://rust-munich.github.io/website/img/rust-munich-logo.svg" # Optional company logo
 tags: ["rust", "backend", "microservices", "kubernetes"]
 draft: false # Set to false when ready to publish
+
+# English content (required)
 description: |
   Join our team building high-performance backend services in Rust.
   You'll work on distributed systems, microservices architecture, and help scale our platform.
@@ -28,3 +30,18 @@ benefits:
   - "Flexible working hours"
   - "Remote/hybrid options"
   - "Conference budget"
+
+# German content (optional) - falls back to English if not provided
+description_de: |
+  Werde Teil unseres Teams und entwickle hochperformante Backend-Services in Rust.
+  Du arbeitest an verteilten Systemen, Microservices-Architektur und hilfst uns, unsere Plattform zu skalieren.
+requirements_de:
+  - "3+ Jahre Rust-Erfahrung"
+  - "Erfahrung mit asynchroner Programmierung"
+  - "Kenntnisse in verteilten Systemen"
+  - "Fließend in Englisch"
+benefits_de:
+  - "Wettbewerbsfähiges Gehalt"
+  - "Flexible Arbeitszeiten"
+  - "Remote/Hybrid-Optionen"
+  - "Konferenz-Budget"

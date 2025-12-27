@@ -1,5 +1,5 @@
 +++
-title = "Imprint / Impressum"
+title = "Imprint"
 template = "page.html"
 +++
 

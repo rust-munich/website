@@ -28,25 +28,25 @@
         {% if p.extra.meetup_url %}<a
             class="btn inline-block px-4 py-2 bg-rust-red text-white rounded font-sans hover:bg-rust-red/90 transition-colors"
             href="{{ p.extra.meetup_url }}"
-            >RSVP on Meetup</a
+            >{% if p.extra.is_past %}{{ trans(key="btn_view_meetup", lang=lang) }}{% else %}{{ trans(key="btn_rsvp", lang=lang) }}{% endif %}</a
         >{% endif %}
         {% if p.extra.youtube_url %}<a
             class="btn inline-block px-4 py-2 border rounded font-sans transition-colors"
             style="border-color: var(--color-border);"
             href="{{ p.extra.youtube_url }}"
-            >Video</a
+            >{{ trans(key="btn_video", lang=lang) }}</a
         >{% endif %}
         {% if p.extra.slides_url %}<a
             class="btn inline-block px-4 py-2 border rounded font-sans transition-colors"
             style="border-color: var(--color-border);"
             href="{{ p.extra.slides_url }}"
-            >Slides</a
+            >{{ trans(key="btn_slides", lang=lang) }}</a
         >{% endif %}
         {% if p.extra.ical_url %}<a
             class="btn inline-block px-4 py-2 border rounded font-sans transition-colors"
             style="border-color: var(--color-border);"
             href="{{ p.extra.ical_url }}"
-            >iCal</a
+            >{{ trans(key="btn_ical", lang=lang) }}</a
         >{% endif %}
     </div>
 </article>

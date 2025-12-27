@@ -1,7 +1,3 @@
 target/
 .claude/
 public/
-content/events/past/*.md
-!content/events/past/_index.md
-content/events/upcoming/*.md
-!content/events/upcoming/_index.md

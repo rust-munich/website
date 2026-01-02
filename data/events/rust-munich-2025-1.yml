@@ -22,8 +22,10 @@ description: |
 
     - 18:30 Hello: prep your beverage!
     - 19:00 talk: "Intro to Gerust" by Marco
+      - watch it on youtube: https://youtu.be/e-NjHQit2wk
     - 19:50 Food Break
-    - 20:15 talk: "An introduction to Pavex" by Luca
+    - 20:15 talk: "Dependency Injection" by Luca
+      - watch it on youtube: https://youtu.be/tu26wlHl3Ew
     - 20:45 open space/discussion
 
   Discord for Q/A + Discussions: https://discord.gg/bM5RzVrF2z

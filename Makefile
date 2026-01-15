@@ -1,5 +1,5 @@
 setup:
-	cargo install --locked --no-default-features --features=native-tls --git https://github.com/getzola/zola
+	cargo install --locked --no-default-features --features=native-tls --git https://github.com/getzola/zola --tag v0.21.0
 	npm install tailwindcss @tailwindcss/cli @tailwindcss/typography @fontsource/fira-sans @fontsource/source-serif-4
 
 build:

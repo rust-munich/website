@@ -1,0 +1,40 @@
+# Single source of truth for events. Generate content with tools/eventgen.
+# One file per event for easier PR reviews.
+id: "rust-munich-2026-1"
+title: "Rust Munich 2026/1"
+date: "2026-02-04"
+time: "18:00"
+venue: "Rakuten"
+address: "Herzogspitalstraße 24"
+city: "Munich"
+tags: ["meetup"]
+meetup_url: "https://www.meetup.com/rust-munich/events/312844145"
+slides_url: "https://github.com/rust-munich/slides"
+youtube_url: ""
+ical_url: "https://www.meetup.com/rust-munich/events/312844145/ical/Rust+Munich+2026++1.ics"
+speakers: ["Jonas Heinrich", "Dongpo Liu"]
+language: "en"
+draft: false
+# Optional: coordinates for map embeds
+lat: 48.13817
+lon: 11.566486
+description: |
+  **Big thanks to our host: Rakuten 👏👏👏**
+
+  Another edition of the rust munich meetup!
+  The on-site event has limited capacity (40 attendees).
+
+  Agenda:
+
+    - 18:00 Hello: prep your beverage!
+    - 19:00~ish talk: "To the Moon Via PyO3: Training an RL Model to Land in a Custom (Bevy) Simulation" by Jonas Heinrich
+    - 19:45~ish: Food Break
+    - 20:15~ish talk: "Shipping TiKV with Cargo" by Dongpo Liu
+    - 21:00~ish open space/discussion
+    - 21:30 THE END
+
+  Please do not come to the venue unless you have reserved a spot.
+
+  Discord for Q/A + Discussions: [Join the Rust Munich Discord](https://discord.gg/bM5RzVrF2z)
+
+  Thank you!

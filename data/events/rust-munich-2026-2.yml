@@ -14,7 +14,7 @@ speakers: []
 language: "en"
 draft: true
 description: |
-  Hands-on mini-hackathon where up to 24 participants explore UI development with gpui together.
+  Hands-on mini-hackathon where up to 24 participants explore UI development with [gpui](https://crates.io/crates/gpui) and [crux](https://crates.io/crates/crux_core) together.  
 
   Similar to university times when you had to solve small problems in the computer lab within an hour - but with Rust programming applied to workplace-relevant skills.
 

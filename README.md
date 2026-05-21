@@ -32,6 +32,20 @@ make build
 make serve
 ```
 
+> [!NOTE]
+> To make it work on stock Ubuntu 24.0 LTS I had to install
+> - the OpenSSL dev package + pkg-config
+>   ```bash
+>   sudo apt install -y libssl-dev pkg-config
+>   ```
+> - a recent version of node
+>   ```bash
+>   cargo install fnm
+>   eval "$(fnm env --use-on-cd)"
+>   fnm install 20
+>   fnm use 20  
+>   ```
+
 ## Adding an event
 
 Create a new file in `data/events/rust-munich-YYYY-number.yml`:

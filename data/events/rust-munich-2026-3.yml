@@ -1,0 +1,40 @@
+# Single source of truth for events. Generate content with tools/eventgen.
+# One file per event for easier PR reviews.
+id: "rust-munich-2026-3"
+title: "Rust Munich 2026/3"
+date: "2026-10-05"
+time: "18:00"
+venue: "Helsing"
+address: "TBD"
+city: "Munich"
+tags: ["meetup"]
+meetup_url: "https://www.meetup.com/rust-munich/events/316244709"
+slides_url: "https://github.com/rust-munich/slides"
+youtube_url: ""
+ical_url: "https://www.meetup.com/rust-munich/events/312844145/ical/Rust+Munich+2026++3.ics"
+speakers: ["Cristian Sánchez ＊", "Jon Gjengset"]
+language: "en"
+draft: false
+# Optional: coordinates for map embeds
+lat:
+lon:
+description: |
+  **Big thanks to our host: Helsing 👏👏👏**
+
+  Another edition of the rust munich meetup!
+  The on-site event has limited capacity, so make sure you don't miss the signup opening.
+
+  Agenda:
+
+    - 18:00 Hello: prep your beverage!
+    - 19:00~ish talk: "An Agentic VM in Rust" by [Cristian Sánchez ＊](https://github.com/noreplydev)
+    - 19:45~ish: Food Break
+    - 20:15~ish talk: **TBD** by [Jon Gjengset](https://github.com/jonhoo)
+    - 21:00~ish open space/discussion
+    - 21:30 THE END
+
+  Please do not come to the venue unless you have reserved a spot.
+
+  Discord for Q/A + Discussions: [Join the Rust Munich Discord](https://discord.gg/bM5RzVrF2z)
+
+  Thank you!

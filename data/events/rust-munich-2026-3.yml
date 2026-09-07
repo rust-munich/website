@@ -5,7 +5,7 @@ title: "Rust Munich 2026/3"
 date: "2026-10-05"
 time: "18:00"
 venue: "Helsing"
-address: "TBD"
+address: "Helsing GmbH, Mühldorfstraße 8, 81671 München, Germany"
 city: "Munich"
 tags: ["meetup"]
 meetup_url: "https://www.meetup.com/rust-munich/events/316244709"
@@ -16,8 +16,8 @@ speakers: ["Cristian Sánchez ＊", "Jon Gjengset"]
 language: "en"
 draft: false
 # Optional: coordinates for map embeds
-lat:
-lon:
+lat: 48.1282151
+lon: 11.6105529
 description: |
   **Big thanks to our host: Helsing 👏👏👏**
 
@@ -29,7 +29,7 @@ description: |
     - 18:00 Hello: prep your beverage!
     - 19:00~ish talk: "An Agentic VM in Rust" by [Cristian Sánchez ＊](https://github.com/noreplydev)
     - 19:45~ish: Food Break
-    - 20:15~ish talk: **TBD** by [Jon Gjengset](https://github.com/jonhoo)
+    - 20:15~ish talk: "Don't make me read between the lines" by [Jon Gjengset](https://github.com/jonhoo)
     - 21:00~ish open space/discussion
     - 21:30 THE END
 
